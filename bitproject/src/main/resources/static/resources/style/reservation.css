@@ -1,0 +1,55 @@
+.cnew {
+    width: 50px;
+    border-radius: 8px;
+    border: 3px solid #007bff;
+}
+
+.mainCardHeader {
+    font-family: 'Heebo', sans-serif;
+}
+
+.text-muted {
+    color: #1e90ff !important;
+    font-weight: 500;
+}
+
+.legendMain {
+    background: aliceblue;
+    display: block;
+    width: auto;
+    max-width: 100%;
+    padding: 0;
+    margin-bottom: 0.5 rem;
+    font-size: 1.5rem;
+    line-height: inherit;
+    /* color: inherit; */
+    white-space: normal;
+    border-radius: 18px;
+    border-style: groove;
+    border-width: 2px;
+    padding: 5px;
+    border-color: #007bff;
+}
+
+.border {
+    border: 1px solid #17a2b8!important;
+}
+
+.btnSet {
+    width: 26% !important;
+    margin-top: 30px;
+}
+
+.btnR {
+    width: 18% !important;
+    margin-top: 30px;
+}
+
+.eqbtn {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.btnmainR{
+    width: 100%;
+}

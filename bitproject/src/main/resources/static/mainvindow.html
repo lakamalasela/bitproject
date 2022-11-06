@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ceylon Engineering : Dashboard </title>
+
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
+
+    <script defer src="resources/fontawesome/js/solid.js"></script>
+    <script defer src="resources/fontawesome/js/fontawesome.js"></script>
+
+    <link rel="icon" href="resources/image/cnew.jpg" type="image/x-icon">
+
+    <script src="resources/jquery/jquery-3.4.1.min.js"></script>
+    <script src="resources/jquery/popper.min.js"></script>
+    <script src="resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="resources/script/common.bitproject.js"></script>
+    <script src="resources/script/mainWindow.js"></script>
+
+    <link rel="stylesheet" href="resources/style/home.css">
+    <link rel="stylesheet" href="resources/style/common.css">
+<!--    <link rel="stylesheet" href="resources/style/style3.css">-->
+    <link rel="stylesheet" href="resources/style/side4.css">
+    <script src="resources/script/sweetalert.min.js"></script>
+
+    <link href='resources/calendar/main.css' rel='stylesheet' />
+    <script src='resources/calendar/main.js'></script>
+
+    <link href='resources/style/clock.css' rel='stylesheet' />
+    <script src='resources/script/clock.js'></script>
+
+    <script src='mainwindowtable.js'></script>
+
+
+    <!-- google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+    <!--google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+
+<!--    <script type="text/javascript">-->
+
+<!--        var someValue = window;-->
+<!--        console.log(someValue)-->
+
+<!--        document.addEventListener('DOMContentLoaded', function() {-->
+
+
+<!--            getrequest();-->
+
+<!--            var calendarEl = document.getElementById('calendar');-->
+<!--            var calendar = new FullCalendar.Calendar(calendarEl, {-->
+<!--                initialView: 'dayGridMonth'-->
+<!--            });-->
+<!--            calendar.render();-->
+<!--        });-->
+<!--    </script>-->
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',function (){
+            getrequest();
+        })
+
+
+    </script>
+
+
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar" style="background-image: linear-gradient(rgba(0, 0, 0, 0.870),rgba(49, 183, 170, 0.75)) ,url('resources/image/ver.jpg')">
+        <div class="sidebar-header">
+
+            <h3><img class="cnew" src="../resources/image/cnew.jpg"><span>Ceylon Engineering</span> </h3>
+            <strong><img class="cnew" src="../resources/image/cnew.jpg"></strong>
+        </div>
+
+        <ul class="list-unstyled components">
+            <li>
+                <a href="http://localhost:8080/mainwindow" data-toggle="collapse" aria-expanded="false">
+                    <i class="fas fa-tachometer-alt"></i><span class="viewPara"> &nbsp;Dashboard</span>
+                </a>
+
+            </li>
+
+            <li class="USER">
+                <a href="http://localhost:8080/user">
+                    <i class="fas fa-user-cog"></i><span class="viewPara">&nbsp; User</span>
+                </a>
+            </li>
+
+            <li class="PRIVILAGE">
+                <a href="http://localhost:8080/privilage">
+                    <i class="fas fa-user-shield"></i><span class="viewPara">&nbsp; Privilege</span>
+                </a>
+            </li>
+
+            <li>
+                <a  href="#customerSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-user-tie"></i> <span class="viewPara"> &nbsp;Customer</span>
+                </a>
+                <ul class="collapse list-unstyled" id="customerSubmenu">
+                    <li  class="CUSTOMER">
+                        <a href="http://localhost:8080/customer"><i class="fas fa-user-plus"></i> Customer Add</a>
+                    </li>
+                    <li class="CUSTOMERPAYMENT">
+                        <a href="http://localhost:8080/cuspayment"><i class="fas fa-hand-holding-usd"></i> Customer Payment</a>
+                    </li>
+                    <li class="RESERVATIONPROGRESS">
+                        <a href="http://localhost:8080/rprogress"><i class="fas fa-book"></i> Reservation Progress</a>
+                    </li>
+
+
+                </ul>
+            </li>
+
+            <li>
+
+                <a href="#serviceSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i><span class="viewPara"> &nbsp;Service</span>
+                </a>
+                <ul class="collapse list-unstyled" id="serviceSubmenu">
+                    <li class="SERVICE">
+                        <a href="http://localhost:8080/service"><i class="fas fa-concierge-bell"></i> Main Services Add</a>
+                    </li>
+                    <li class="PLAN">
+                        <a href="http://localhost:8080/plan"><i class="fas fa-ruler-combined"></i> Service Plan</a>
+                    </li>
+
+                </ul>
+            </li>
+
+
+
+            <li>
+                <a  href="#reservationSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-book-open"></i> <span class="viewPara"> &nbsp;Reservation</span>
+                </a>
+                <ul class="collapse list-unstyled" id="reservationSubmenu">
+                    <li class="RESERVATION">
+                        <a href="http://localhost:8080/reservation"><i class="fas fa-sticky-note"></i> Reservation Add</a>
+                    </li>
+                    <li class="DESIGNERASSIGNMENT">
+                        <a href="http://localhost:8080/designerassign"><i class="fas fa-user-edit"></i> Designer Add</a>
+                    </li>
+                    <li class="QSASSIGNMENT">
+                        <a href="http://localhost:8080/qsassign"><i class="fas fa-user-plus"></i> QS Add</a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="ESTIMATION">
+                <a href="http://localhost:8080/estimation">
+                    <i class="fas fa-pencil-ruler"></i><span class="viewPara">&nbsp; Estimation</span>
+                </a>
+            </li>
+            <li class="BSR">
+                <a href="http://localhost:8080/bsr">
+                    <i class="fas fa-pencil-ruler"></i><span class="viewPara">&nbsp; BSR</span>
+                </a>
+            </li>
+            <li>
+                <a  href="#equipmentSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-tools"></i> <span class="viewPara"> &nbsp;Equipment</span>
+                </a>
+                <ul class="collapse list-unstyled" id="equipmentSubmenu">
+                    <li class="EQUIPMENT">
+                        <a href="http://localhost:8080/equipment"><i class="fas fa-toolbox"></i></i> Equipmet Add</a>
+                    </li>
+                    <li class="EQSHIFTMENT">
+                        <a href="http://localhost:8080/eqshiftment"><i class="fas fa-toolbox"></i> Equipment Shiftment</a>
+                    </li>
+                    <li class="EQINVENTORY">
+                        <a href="http://localhost:8080/eqinventory"><i class="fas fa-toolbox"></i> Equipment Inventory</a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li>
+                <a  href="#employeeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-id-card"></i> <span class="viewPara"> &nbsp;Employee</span>
+                </a>
+                <ul class="collapse list-unstyled" id="employeeSubmenu">
+                    <li class="EMPLOYEE">
+                        <a href="http://localhost:8080/employee"><i class="fas fa-id-card-alt"></i></i> Employee Add</a>
+                    </li>
+                    <li class="EMPSHIFTMENT">
+                        <a href="http://localhost:8080/empshiftment"><i class="fas fa-users-cog"></i> Employee Shiftment</a>
+                    </li>
+
+                </ul>
+            </li>
+
+
+            <li id="REPORTS" disabled>
+                <a  href="#reportSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-book"></i> <span class="viewPara"> &nbsp;Reports</span>
+                </a>
+                <ul class="collapse list-unstyled" id="reportSubmenu">
+
+                    <li>
+                        <a href="http://localhost:8080/report/cusarrears"><i class="fas fa-users-cog"></i> Customer Arrears Report</a>
+                    </li>
+
+                    <li>
+                        <a href="http://localhost:8080/report/noassignemp"><i class="fas fa-id-card-alt"></i></i> Available Employee Report</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/report/empworkingusage"><i class="fas fa-users-cog"></i> Employee Working Progress Report</a>
+                    </li>
+
+                    <li>
+                        <a href="http://localhost:8080/report/expemp"><i class="fas fa-users-cog"></i> Expected Employee Report</a>
+                    </li>
+
+                    <li>
+                        <a href="http://localhost:8080/report/eqallocation"><i class="fas fa-toolbox"></i> Expected Equipment Available Report</a>
+                    </li>
+
+
+                </ul>
+            </li>
+
+
+
+        </ul>
+
+
+    </nav>
+
+
+
+
+
+
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 8px 8px;">
+
+            <div class="container-fluid">
+                <div class="float-left">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info btn-color">
+                        <i class="fas fa-align-left text-white"></i>
+                        <span></span>
+                    </button>
+
+                    <button type="button" class="btn btn-info btn-color ml-3">
+                        <a href="http://localhost:8080/mainwindow"> <i class="fa fa-home text-white"></i></a>
+                        <span></span>
+                    </button>
+
+
+
+                </div>
+                <div class="AnimateShadow">
+                    <h2 class="ceylonHead"> <i class="fas fa-building mr-2 animatesymboll"></i>Ceylon Engineering </h2>
+                </div>
+
+                <div id="clockdate">
+                    <div class="clockdate-wrapper">
+                        <div id="clock"></div>
+                        <div id="date"></div>
+                    </div>
+                </div>
+
+
+                <div class="float-right" style="margin-top: 10px">
+                    <p class="font-weight-bold text-white ceylonLog"> Loged as : <a href="#" class="badge badge-success"><span id="spnDesignation"> </span></a>   </p>
+                </div>
+                <form class="form-inline my-2 my-lg-0 mr-2 float-right">
+
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ">
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" style="width: 160px" href="#"
+                                   id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    <img id="profileImage" class="profileImage">
+                                    <p style="font-size: 15px;font-weight: 500" class="loggedUserNameField d-inline" id="lblLogUser">123456</p>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="width: 189px;">
+<!--                                    <a class="dropdown-item" href="#"><i class="far fa-sliders-v"></i> View Profile</a>-->
+                                    <a class="dropdown-item" href="#" data-toggle="modal"
+                                       data-target="#settingsModal"><i class="far fa-sliders-v"></i> Change Password</a>
+                                    <a class="dropdown-item" href="#" onclick="btnSignoutMC()"><i
+                                            class="fas fa-sign-out-alt"></i> Sign Out</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </form>
+            </div>
+
+        </nav>
+
+        <!-- Content -->
+        <div class="container-fluid dashbordbody">
+
+            <div class="row">
+                <div class="col-md-7" style="background-color: rgba(196,192,192,0.4);">
+                    <div class="row mt-3 mainBlock">
+                        <div class="col-md-4 text-white block_other EMPLOYEE" style="max-width: 18rem;cursor: pointer;"
+                             onclick="window.location.assign('http://localhost:8080/employee')">
+                            <div class="card-counter">
+                                <div class="text-center"> <i class="fas fa-users sym text-center"></i></div>
+                                <div class="inner">
+                                    <div class="text-white text-center p-0"><h5 style="font-size: 18px;" class="ceylonLog">
+                                        Employee</h5></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center text-white block_other USER" style="max-width: 18rem;cursor: pointer;"
+                             onclick="window.location.assign('http://localhost:8080/user')">
+                            <div class="card-counter">
+                                <div class="text-center"> <i class="fas fa-house-user sym"></i></div>
+                                <div class="inner">
+                                    <div class="text-white text-center p-0"><h5 style="font-size: 18px;" class="ceylonLog">
+                                        User</h5></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center text-white block_other PRIVILAGE" style="max-width: 18rem;cursor: pointer;"
+                             onclick="window.location.assign('http://localhost:8080/privilage')">
+                            <div class="card-counter">
+                                <div class="text-center"><i class="fas fa-user-shield sym"></i></div>
+                                <div class="inner">
+                                    <div class="text-white text-center p-0"><h5 style="font-size: 18px;" class="ceylonLog">
+                                        Privilege</h5></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--row  end -->
+                    <div class="row mt-3 mainBlock">
+                        <div class="col-md-4 text-white block_other CUSTOMER" style="max-width: 18rem;cursor: pointer;"
+                             onclick="window.location.assign('http://localhost:8080/customer')">
+                            <div class="card-counter">
+                                <div class="text-center"><i class="fas fa-house-user sym"></i></div>
+                                <div class="inner">
+                                    <div class="text-white text-center p-0"><h5 style="font-size: 18px;" class="ceylonLog">
+                                        Customer</h5></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 text-white block_other RESERVATION" style="max-width: 18rem;cursor: pointer;"
+                             onclick="window.location.assign('http://localhost:8080/reservation')">
+                           <div class="other">
+                               <div class="card-counter">
+                                   <div class="text-center"><i class="fas fa-book sym"></i></div>
+                                   <div class="inner">
+                                       <div class="text-white text-center p-0"><h5 style="font-size: 18px;" class="ceylonLog">
+                                           Reservation</h5></div>
+                                   </div>
+                               </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-4 text-white block_other SERVICE" style="max-width: 18rem;cursor: pointer;"
+                             onclick="window.location.assign('http://localhost:8080/service')">
+                            <div class="card-counter">
+                                <div class="text-center"><i class="fas fa-swatchbook sym"></i></div>
+                                <div class="inner">
+                                    <div class="text-white text-center p-0"><h5 style="font-size: 18px;" class="ceylonLog">
+                                       Main Service</h5></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row mt-3 mainBlock">
+
+                        <div class="col-md-4 text-white block_other EMPSHIFTMENT" style="max-width: 18rem;cursor: pointer;"
+                             onclick="window.location.assign('http://localhost:8080/empshiftment')">
+                            <div class="other">
+                                <div class="card-counter">
+                                    <div class="text-center"><i class="fas fa-users-cog sym"></i></div>
+                                    <div class="inner">
+                                        <div class="text-white text-center p-0"><h5 style="font-size: 18px;" class="ceylonLog">
+                                            Employee Shiftment</h5></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 text-white block_other EQSHIFTMENT" style="max-width: 18rem;cursor: pointer;"
+                             onclick="window.location.assign('http://localhost:8080/eqshiftment')">
+                            <div class="other">
+                                <div class="card-counter">
+                                    <div class="text-center"><i class="fas fa-tools sym"></i></div>
+                                    <div class="inner">
+                                        <div class="text-white text-center p-0"><h5 style="font-size: 18px;" class="ceylonLog">
+                                            Equipment Shiftment</h5></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 text-white block_other" style="max-width: 18rem;cursor: pointer;"
+                             onclick="window.location.assign('http://localhost:8080/cuspayment')">
+                            <div class="other CUSTOMERPAYMENT">
+                                <div class="card-counter">
+                                    <div class="text-center"><i class="fas fa-hand-holding-usd sym"></i></div>
+                                    <div class="inner">
+                                        <div class="text-white text-center p-0"><h5 style="font-size: 18px;" class="ceylonLog">
+                                            Payment</h5></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+
+                </div>
+                <div class="col-md-4 ml-5" style="margin-right: 10px;">
+                    <div class="row" style="background-color: rgba(191,188,188,0.3)">
+                        <div class="container-fluid">
+                            <h3 class="text-center font-weight-bold ceylonLog" style="color: #fffbf2";>Notification <button type="button" id="btnBell" class="btn" style="background-color: #207878!important;" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-bell"></i>
+                            </button></h3>
+                        </div>
+                    </div>
+
+                    <!-- Button trigger modal -->
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header" style="background-color: #207878!important;">
+                                    <h5 class="modal-title" style="color:  #fffbf2;"  id="exampleModalLabel">After the 9 Days Available Employees  </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" style="background-color: #bbc3d1;!important;">
+                                    <div class="container-fluid" id="divnotification"></div>
+                                </div>
+                                <div class="modal-footer">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row mt-1" style="background-color: rgba(172,168,168,0.67)">
+<!--                        <div class="container-fluid" id="divnotification"></div>-->
+                    </div>
+
+                    <div class="row mt-4" style="margin-right: -54px;">
+                        <div class="col-md-12" style="height: 340px;background-color: rgba(196,192,192,0.4);" >
+                            <!--caresoul start  -->
+                            <div id="carouselExampleIndicators" style="padding-top: 18px;" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img class="d-block w-100" src="resources/image/ceynew8.jpg" alt="First slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="resources/image/ceynew7.jpg" alt="Second slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="resources/image/ceynew26.jpg" alt="Third slide">
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                            <!-- carousel end-->
+
+                            <!--                           <div id='cale ndar' ></div>-->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="row" style="background-color: rgba(191,188,188,0.3);margin-left: 0px">
+                    <div class="container-fluid">
+                        <h3 class="text-center font-weight-bold ceylonLog" style="color: #fffbf2;">In-Progress Reservations</h3>
+                    </div>
+                </div>
+
+                <div class="col-md-12" style="background-color: rgba(196,192,192,0.4);">
+
+                    <div class="table-responsive tableFonts" id="tableParent" class="table-container ml-2" style="padding-top: 16px;">
+
+                        <script>
+
+                            function getNameColumn(ob) {
+                                return ob.callingname + "(" + ob.number + ")";
+                            }
+
+                            var metadata = [
+                                {name: 'Res_Code', search: true, datatype: 'text', property: 'reservationcode'},
+                                {name: 'Customer', search: true, datatype: 'text', property: 'customer_id.callingname'},
+                                {name: 'Location', search: true, datatype: 'text', property: 'projectlocation'},
+                                {
+                                    name: 'Province',
+                                    search: true,
+                                    datatype: 'text',
+                                    property: 'province_id.name'
+                                },
+                                {
+                                    name: 'Status',
+                                    search: true,
+                                    datatype: 'text',
+                                    property: 'reservationstatus_id.name'
+                                }
+                            ];
+                            tableManin("tableParent", "tblMainReservation", metadata, false);
+
+                        </script>
+
+
+                    </div>
+
+                    <div>
+                        <div style="display: inline-block ; float: left">
+                            <select class="form-control input" id="cmbPageSize"
+                                    style="width: 80px;">
+                                <option selected value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="15">15</option>
+
+                            </select>
+                            <script>
+                                cmbPageSize.onchange = function chnagePageSize() {
+                                    activepage = 1;
+                                    btnSearchMC();
+                                };
+                            </script>
+                        </div>
+                        <div style="display: inline-block; margin-left: 10px;">
+                            <ul id="pagination" class="pagination"></ul>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div id="err" style="margin-top: 10px"></div>
+    </div>
+</div>
+
+
+<div class="overlay"></div>
+<div class="logoutray">
+
+</div>
+
+<!-- Settings Modal-->
+<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog"
+     aria-labelledby="settingsModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content" id="modalContent">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle"><i
+                        class="fas fa-cog"></i> Settings</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="changePasswordForm" onsubmit="return false">
+                    <div class="form-row">
+                        <!-- Username -->
+                        <div class="form-group col-md-12">
+                            <label for="txtUsernameView" class="text-blue">
+                                <b>Username</b>
+                            </label>
+                            <div readonly class="form-control-plaintext"
+                                 id="txtUsernameView"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Current Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtCurrentPassword"
+                                   class="text-blue"><b>Current Password</b> <i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtCurrentPassword"
+                                   onkeyup="textFieldBinder(txtCurrentPassword, '^[0-9]{5,}$', 'changePassword', 'currentPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- New Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtNewPassword" class="text-blue"><b>New
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtNewPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', '', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Confirm Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtConfirmPassword"
+                                   class="text-blue"><b>Confirm
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtConfirmPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', 'newPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="brnClosechnagepasswordmodle" class="btn btn-secondary" data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary"
+                        onclick="btnSaveChangePasswordMC()">Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="requestModel" tabindex="-1" role="dialog"
+     aria-labelledby="settingsModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content" >
+            <div class="modal-header">
+                <h5 class="modal-title"><i
+                        class="fas fa-cog"></i> Appointment View</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <table class="table table-striped" id="requestutable">
+                    <thead>
+                        <tr>
+                            <th colspan="6" class="text-center font-weight-bold"> <h1>KM Medical Center</h1></th>
+                        </tr>
+                        <tr>
+                            <th>
+                                No. 213/D, A/8, Panadura.
+                            </th>
+                            <th></th>
+                            <th>
+                                Tel : 038-5681122
+                            </th>
+                            <th></th>
+                            <th>
+                                Email : kmmedicalcenter@gmail.com
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th>Appointment No :</th>
+                        <td id="tdAno">KMCA2100002</td>
+                        <td></td>
+                        <td></td>
+                        <th>Chanaling No :</th>
+                        <td id="tdCno">01</td>
+                    </tr>
+                    <tr>
+                        <th>Date :</th>
+                        <td id="tdAdatetime">2021-03-11 7:45:00</td>
+                        <td></td>
+                        <td></td>
+                        <th>Patient Age :</th>
+                        <td id="tdPAge">25</td>
+                    </tr>
+                    <tr>
+                        <th>Patient Name :</th>
+                        <td id="tdCusName">Sashikala</td>
+                        <td></td>
+                        <td></td>
+                        <th>Gender :</th>
+                        <td id="tdPGender">Femane</td>
+                    </tr>
+
+                    </tbody>
+                    <tfoot >
+                    <tr>
+                        <th>Doctor Name :</th>
+                        <td id="tdDName" colspan="2"></td>
+                        <td></td>
+                        <th></th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6"></td>
+                    </tr>
+
+                    </tfoot>
+
+                </table>
+                <div class="modal-footer">
+                    <button type="button"  class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button"  class="btn btn-primary"  onclick="btnCheckMC()">Check</button>
+                    <button type="button"  class="btn btn-success"  onclick="btnPrintMC()">Print</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    //console.log("ROLE",session.getObject("activeuser").employeeId.designationId.name);
+
+
+
+    function getrequest() {
+        divnotification.innerHTML = "";
+        explaborlist = new Array();
+            // notification
+         explaborlist = httpRequest("../lanotification/listemp", "GET");
+        if(explaborlist.length != 0){
+            var rowh = document.createElement('div');
+            rowh.classList.add('row');
+            rowh.classList.add('p-2');
+            rowh.classList.add('table-primary');
+
+            var colh6 = document.createElement('div');
+            colh6.innerText = "Emp-No";
+            colh6.classList.add('font-weight-bold');
+
+            colh6.classList.add('col-md-3');
+            var colh31 = document.createElement('div');
+            colh31.classList.add('col-md-5');
+            colh31.innerText = "La-Type";
+            colh31.classList.add('font-weight-bold');
+
+            var colh32 = document.createElement('div');
+            colh32.classList.add('col-md-4');
+            colh32.innerText = "Res-Code";
+            colh32.classList.add('font-weight-bold');
+
+            rowh.appendChild(colh6);
+            rowh.appendChild(colh31);
+            rowh.appendChild(colh32);
+
+            divnotification.appendChild(rowh);
+
+            for(var index in explaborlist){
+                var row = document.createElement('div');
+                row.classList.add('row');
+                row.classList.add('p-2');
+                row.style.backgroundColor =  'rgba(238,231,231,0.4)';
+                var col6 = document.createElement('div');
+                col6.classList.add('col-md-3');
+                var label6 = document.createElement('label');
+                label6.classList.add('font-weight-bold');
+                label6.innerHTML = explaborlist[index][0];
+
+
+                var col31 = document.createElement('div');
+                col31.classList.add('col-md-5');
+                var label31 = document.createElement('label');
+                label31.classList.add('font-weight-bold');
+                label31.innerHTML = explaborlist[index][1];
+
+
+                var col32 = document.createElement('div');
+                col32.classList.add('col-md-4');
+                var label32 = document.createElement('label');
+                label32.classList.add('font-weight-bold');
+                label32.innerHTML = explaborlist[index][2];
+
+
+                col6.appendChild(label6);
+                col31.appendChild(label31);
+                col32.appendChild(label32);
+
+                row.appendChild(col6);
+                row.appendChild(col31);
+                row.appendChild(col32);
+
+                // var button = document.createElement('button');
+                // button.classList.add('btn');
+                // button.classList.add('btn-sm');
+                // button.classList.add('btn-outline-info');
+                // button.innerHTML = '<i class="fa fa-print" aria-hidden="true"></i>';
+                // button.setAttribute('data-toggle','modal')
+                // button.setAttribute('data-target','#requestModel')
+                // button.onclick=function(){
+                //     loadPrintView(this.parentNode.parentNode.firstChild.children[0].innerHTML);
+                // };
+                // col4.appendChild(button);
+
+                divnotification.appendChild(row);
+
+
+
+            }
+
+
+
+        }
+
+
+        if(session.getObject("activeuser").employeeId.designationId.name == "Admin" || session.getObject("activeuser").employeeId.designationId.name == "Supervisor"){
+            btnBell.disabled = false;
+            $('#btnBell').css('cursor','pointer');
+
+
+
+        }else{
+            btnBell.disabled = true;
+            $('#btnBell').css('cursor','not-allowed');
+
+
+
+        }
+
+
+
+
+    }
+    function loadPrintView(ano) {
+        appoitnment = httpRequest("../appoinment/byno?no="+ano, "GET");
+        tdAno.innerHTML = appoitnment.no;
+        tdCno.innerHTML = appoitnment.chanalingnumber;
+        tdCusName.innerHTML =  appoitnment.patientId.patientTypeId.name+ " " +appoitnment.patientId.fname;
+        tdAdatetime.innerHTML = appoitnment.appoinmentdate + " "+appoitnment.apinmenttime;
+        var now = new Date();
+        var dob = new Date(appoitnment.patientId.dob);
+        var age = now.getTime()-dob.getTime();
+        tdPAge.innerHTML = Math.floor(age / (1000 * 60 * 60 * 24 * 365.25)) + " Y";
+        tdPGender.innerHTML = appoitnment.patientId.genderId.name;
+        tdDName.innerHTML = "Dr. " + appoitnment.doctorId.fname;
+    }
+
+    function btnPrintMC(request) {
+
+        var newwindow=window.open();
+        formattab = requestutable.outerHTML;
+
+        newwindow.document.write("" +
+            "<html>" +
+            "<head>" +
+            "<link rel='stylesheet' href='resourse/bootstrap/css/bootstrap.min.css'/>" +
+            "</head>" +
+            "<body style='border: 2px solid black; padding: 10px'>" +
+            "<div>"+ formattab+"</div>"+
+            "</body>" +
+            "</html>");
+    setTimeout(function () {newwindow.print(); newwindow.close();},100) ;
+
+    }
+
+    function btnCheckMC() {
+        var response = httpRequest("/request", "PUT", request);
+        if (response == "0") {
+            swal({
+                title: "Check Successfully...!",
+                text: "\n\n Status change to Checked",
+                icon: "success",
+                button: false,
+                timer: 1200,
+            });
+            getrequest();
+            $('#requestModel').modal('hide');
+        } else {
+            swal({
+                title: "You have following errors...!",
+                text: "\n\n" + response,
+                icon: "error",
+                button: true,
+            });
+        }
+
+    }
+
+</script>
+</body>
+</html>

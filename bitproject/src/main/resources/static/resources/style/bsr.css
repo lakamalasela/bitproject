@@ -1,0 +1,22 @@
+.mainCardHeader {
+    font-family: 'Heebo', sans-serif;
+}
+
+.cnew {
+    width: 50px;
+    border-radius: 8px;
+    border: 3px solid #007bff;
+}
+.ceylonHead{
+    font-family: 'Lobster', cursive;
+}
+
+/*.btnSet {*/
+/*    width: 26% !important;*/
+/*    margin-top: 30px;*/
+/*}*/
+
+.btnSub {
+    padding-bottom: 10px;
+    text-align: center;
+}

@@ -1,0 +1,27 @@
+.invoice-address{
+    margin: 1rem 0 0 5px;
+    padding: 1rem;
+    line-height: 180%;
+    /*background: #f5f6fa;*/
+
+}
+.invoice-main{
+    margin: 1rem 0 0px -207px;
+    padding: 1rem;
+    line-height: 180%;
+}
+.invoice-amount{
+    margin: 1rem 0 0px 6px;
+    padding: 1rem;
+    line-height: 180%;
+}
+.invoice-details{
+    margin: 1rem 0 0px 12px;
+    padding: 1rem;
+    line-height: 180%;
+}
+.Onlineinvoice-details{
+    margin: 18px 0 0px 12px;
+    padding: 1rem;
+    line-height: 180%;
+}

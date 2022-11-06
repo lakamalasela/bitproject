@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ceylon Engineering : BSR Management </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/bootstrap/css/font-awesome.min.css">
+
+    <link rel="icon" href="resources/image/cnew.jpg" type="image/x-icon">
+
+    <!-- google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+    <!--google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Merriweather+Sans:wght@500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="resources/style/bsrcategry.css">
+    <style>
+
+        .table-container {
+            width: auto;
+            overflow-x: scroll !important;
+        }
+
+        .tooltip-inner {
+            background-color: #f00;
+        }
+    </style>
+
+
+    <script defer src="resources/fontawesome/js/solid.js"></script>
+    <script defer src="resources/fontawesome/js/fontawesome.js"></script>
+
+
+    <script src="resources/jquery/jquery-3.4.1.min.js"></script>
+    <script src="resources/jquery/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="resources/jquery/popper.min.js"></script>
+    <script src="resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="resources/script/common.bitproject.js"></script>
+    <script src="resources/script/innertablefunctions.js"></script>
+
+    <script src="resources/script/mainWindow.js"></script>
+    <script src="bsr.js"></script>
+
+
+
+    <link rel="stylesheet" href="resources/style/home.css">
+    <link rel="stylesheet" href="resources/style/common.css">
+    <link rel="stylesheet" href="resources/style/side4.css">
+    <script src="resources/script/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="resources/style/bsr.css">
+
+
+    <link href='resources/style/clock.css' rel='stylesheet' />
+    <script src='resources/script/clock.js'></script>
+<!--    <script src="resources/jquery/jquery-3.3.1.slim.min.js"></script>-->
+
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar" style="background-image: linear-gradient(rgba(0, 0, 0, 0.870),rgba(49, 183, 170, 0.75)) ,url('resources/image/ver.jpg')">
+        <div class="sidebar-header">
+
+            <h3><img class="cnew" src="../resources/image/cnew.jpg"><span>Ceylon Engineering</span> </h3>
+            <strong><img class="cnew" src="../resources/image/cnew.jpg"></strong>
+        </div>
+
+        <ul class="list-unstyled components">
+            <li>
+                <a href="http://localhost:8080/mainwindow" data-toggle="collapse" aria-expanded="false">
+                    <i class="fas fa-tachometer-alt"></i><span class="viewPara"> &nbsp;Dashboard</span>
+                </a>
+
+            </li>
+
+            <li class="USER">
+                <a href="http://localhost:8080/user">
+                    <i class="fas fa-user-cog"></i><span class="viewPara">&nbsp; User</span>
+                </a>
+            </li>
+
+            <li class="PRIVILAGE">
+                <a href="http://localhost:8080/privilage">
+                    <i class="fas fa-user-shield"></i><span class="viewPara">&nbsp; Privilege</span>
+                </a>
+            </li>
+
+            <li>
+                <a  href="#customerSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-user-tie"></i> <span class="viewPara"> &nbsp;Customer</span>
+                </a>
+                <ul class="collapse list-unstyled" id="customerSubmenu">
+                    <li class="CUSTOMER">
+                        <a href="http://localhost:8080/customer"><i class="fas fa-user-plus"></i> Customer Add</a>
+                    </li>
+                    <li class="CUSTOMERPAYMENT">
+                        <a href="http://localhost:8080/cuspayment"><i class="fas fa-hand-holding-usd"></i> Customer Payment</a>
+                    </li>
+                    <li class="RESERVATIONPROGRESS">
+                        <a href="http://localhost:8080/rprogress"><i class="fas fa-book"></i> Reservation Progress</a>
+                    </li>
+
+
+                </ul>
+            </li>
+
+            <li>
+
+                <a href="#serviceSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i><span class="viewPara"> &nbsp;Service</span>
+                </a>
+                <ul class="collapse list-unstyled" id="serviceSubmenu">
+                    <li class="SERVICE">
+                        <a href="http://localhost:8080/service"><i class="fas fa-concierge-bell"></i> Main Services Add</a>
+                    </li>
+                    <li class="PLAN">
+                        <a href="http://localhost:8080/plan"><i class="fas fa-ruler-combined"></i> Service Plan</a>
+                    </li>
+
+                </ul>
+            </li>
+
+
+
+            <li>
+                <a  href="#reservationSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-book-open"></i> <span class="viewPara"> &nbsp;Reservation</span>
+                </a>
+                <ul class="collapse list-unstyled" id="reservationSubmenu">
+                    <li class="RESERVATION">
+                        <a href="http://localhost:8080/reservation"><i class="fas fa-sticky-note"></i> Reservation Add</a>
+                    </li>
+                    <li class="DESIGNERASSIGNMENT">
+                        <a href="http://localhost:8080/designerassign"><i class="fas fa-user-edit"></i> Designer Add</a>
+                    </li>
+                    <li class="QSASSIGNMENT">
+                        <a href="http://localhost:8080/qsassign"><i class="fas fa-user-plus"></i> QS Add</a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="ESTIMATION">
+                <a href="http://localhost:8080/estimation">
+                    <i class="fas fa-pencil-ruler"></i><span class="viewPara">&nbsp; Estimation</span>
+                </a>
+            </li>
+            <li class="BSR">
+                <a href="http://localhost:8080/bsr">
+                    <i class="fas fa-pencil-ruler"></i><span class="viewPara">&nbsp; BSR</span>
+                </a>
+            </li>
+            <li>
+                <a  href="#equipmentSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-tools"></i> <span class="viewPara"> &nbsp;Equipment</span>
+                </a>
+                <ul class="collapse list-unstyled" id="equipmentSubmenu">
+                    <li class="EQUIPMENT">
+                        <a href="http://localhost:8080/equipment"><i class="fas fa-toolbox"></i></i> Equipmet Add</a>
+                    </li>
+                    <li class="EQSHIFTMENT">
+                        <a href="http://localhost:8080/eqshiftment"><i class="fas fa-toolbox"></i> Equipment Shiftment</a>
+                    </li>
+                    <li class="EQINVENTORY">
+                        <a href="http://localhost:8080/eqinventory"><i class="fas fa-toolbox"></i> Equipment Inventory</a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li>
+                <a  href="#employeeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-id-card"></i> <span class="viewPara"> &nbsp;Employee</span>
+                </a>
+                <ul class="collapse list-unstyled" id="employeeSubmenu">
+                    <li class="EMPLOYEE">
+                        <a href="http://localhost:8080/employee"><i class="fas fa-id-card-alt"></i></i> Employee Add</a>
+                    </li>
+                    <li class="EMPSHIFTMENT">
+                        <a href="http://localhost:8080/empshiftment"><i class="fas fa-users-cog"></i> Employee Shiftment</a>
+                    </li>
+
+
+                </ul>
+            </li>
+
+
+
+            <li>
+                <a  href="#reportSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-book"></i> <span class="viewPara"> &nbsp;Reports</span>
+                </a>
+                <ul class="collapse list-unstyled" id="reportSubmenu">
+
+                    <li>
+                        <a href="http://localhost:8080/report/cusarrears"><i class="fas fa-users-cog"></i> Customer Arrears Report</a>
+                    </li>
+
+                    <li>
+                        <a href="http://localhost:8080/report/noassignemp"><i class="fas fa-id-card-alt"></i></i> Available Employee Report</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/report/empworkingusage"><i class="fas fa-users-cog"></i> Employee Working Progress Report</a>
+                    </li>
+
+                    <li>
+                        <a href="http://localhost:8080/report/expemp"><i class="fas fa-users-cog"></i> Expected Employee Report</a>
+                    </li>
+
+                    <li>
+                        <a href="http://localhost:8080/report/eqallocation"><i class="fas fa-toolbox"></i> Expected Equipment Available Report</a>
+                    </li>
+
+
+                </ul>
+            </li>
+
+
+
+        </ul>
+
+
+    </nav>
+
+
+
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between"  data-spy="affix" data-offset-top="197" style="padding: 8px 8px;">
+            <div class="container-fluid">
+                <div class="float-left">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span></span>
+                    </button>
+
+                    <button type="button" class="btn btn-info ml-3">
+                        <a href="http://localhost:8080/mainwindow"> <i class="fa fa-home"></i></a>
+                        <span></span>
+                    </button>
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="privilegeSet" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header" style="background-color: #bae0f1;">
+                                    <h5 class="modal-title ceylonLog" style="color:#232348;"  id="exampleModalLongTitle">Choose the Main Modules</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" style="border-radius: 10px !important;padding: 26px;background-image: linear-gradient(rgba(255, 248, 248, 0.640),rgba(247, 237, 237, 0.80)) ,url('resources/image/exc.jpg')">
+                                    <!--start ul-->
+                                    <!--card start-->
+                                    <div class="card mainBlock">
+                                        <div class="card-body" style="padding: 26px;background-image: linear-gradient(rgba(255, 248, 248, 0.640),rgba(247, 237, 237, 0.80)) ,url('resources/image/exc.jpg')">
+                                            <div class="row">
+                                                <div class="col-md-4 block_other">
+                                                    <div class="text-center emp"
+                                                         onclick="window.location.assign('http://localhost:8080/employee')">
+                                                        <div class="card"   style="cursor: pointer;">
+                                                            <div class="card-header text-center" style="font-size:60px;color:#fff;background-color:#343a40;">
+                                                                <i class="fas fa-user-friends"></i>
+                                                            </div>
+                                                            <div class="card-body text-center" style="background-color: rgba(29,85,211,0.4);">
+                                                                <span style="font-weight: 600;font-size: 16px">Employee</span>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 block_other">
+                                                    <div class="text-center emp"
+                                                         onclick="window.location.assign('http://localhost:8080/user')">
+                                                        <div class="card"   style="cursor: pointer;">
+                                                            <div class="card-header text-center" style="font-size:60px;color:#fff;background-color:#343a40;">
+                                                                <i class="fas fa-user"></i>
+                                                            </div>
+                                                            <div class="card-body text-center" style="background-color: rgba(29,85,211,0.4);">
+                                                                <span style="font-weight: 600;font-size: 16px">USER</span>
+
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 block_other">
+                                                    <div class="text-center"
+                                                         onclick="window.location.assign('http://localhost:8080/privilage')">
+                                                        <div class="card"   style="cursor: pointer;">
+                                                            <div class="card-header text-center" style="font-size:60px;color:#fff;background-color:#343a40;">
+                                                                <i class="fas fa-user-lock"></i>
+                                                            </div>
+                                                            <div class="card-body text-center" style="background-color: rgba(29,85,211,0.4);">
+                                                                <span style="font-weight: 600;font-size: 16px">Privilege</span>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--card end  -->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--modal end-->
+
+                    <!--employee,userprivilege start -->
+                    <button type="button" style="height: 38px;" class="btn btn-info ml-3 p-0" data-toggle="modal" data-target="#privilegeSet">
+                        <a class="nav-link justify-content-center"  href="#"><i
+                                class="fa fa-th"></i> </a>
+
+                    </button>
+
+<!--                    <button type="button" class="btn btn-info ml-3 mainBtn">-->
+<!--                        <a class="cusHead" href="http://localhost:8080/customer"><i class="fas fa-house-user"></i><span>Customer</span> </a>-->
+<!--                        <span></span>-->
+<!--                    </button>-->
+
+<!--                    <button type="button" class="btn btn-info ml-3 mainBtn">-->
+<!--                        <a class="cusHead" href="http://localhost:8080/service"><i class="fas fa-briefcase"></i> <span>Service</span></a>-->
+<!--                        <span></span>-->
+<!--                    </button>-->
+
+
+                    <!--employee,user,privilege -->
+
+
+                </div>
+
+                <div class="AnimateShadow">
+                    <h2 class="ceylonHead"> <i class="fas fa-building mr-2 animatesymboll"></i>Ceylon Engineering </h2>
+                </div>
+
+                <div id="clockdate">
+                    <div class="clockdate-wrapper">
+                        <div id="clock"></div>
+                        <div id="date"></div>
+                    </div>
+                </div>
+
+                <div class="float-right" style="margin-top: 10px">
+                    <p class="font-weight-bold text-white ceylonLog"> Loged as : <a href="#" class="badge badge-success"><span id="spnDesignation"> </span></a></p>
+                </div>
+                <form class="form-inline my-2 my-lg-0 mr-2 float-right">
+
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" style="width: 160px" href="#"
+                                   id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    <img id="profileImage" class="profileImage">
+                                    <p class="loggedUserNameField d-inline" id="lblLogUser">123456</p>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="width: 189px;">
+<!--                                    <a class="dropdown-item" href="#"><i class="far fa-sliders-v"></i> View Profile</a>-->
+                                    <a class="dropdown-item" href="#" data-toggle="modal"
+                                       data-target="#settingsModal"><i class="far fa-sliders-v"></i> Change Password</a>
+                                    <a class="dropdown-item" href="#" onclick="btnSignoutMC()"><i
+                                            class="fas fa-sign-out-alt"></i> Sign Out</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </form>
+            </div>
+
+        </nav>
+        <!-- Content -->
+        <div class="container-fluid dashbordbody p-0">
+
+            <div class="row" id="ui">
+                <div class="col-md-12">
+                    <div class="card cardstyle bg-info">
+                        <div class="card-header text-left cardhead">
+                            <h2 class="ceylonLog cardForheader"><img class="cnew" src="../resources/image/cnew.jpg">BSR Management</h2>
+                        </div>
+
+                        <div class="card-body" style="background-image: linear-gradient(rgba(255, 248, 248, 0.640),rgba(247, 237, 237, 0.80)) ,url('resources/image/exc.jpg')">
+
+                            <ul class="nav nav-tabs mb-2">
+                                <li class="nav-item ceylonLog" onclick="changeTab('form')">
+                                    <a class="nav-link active" id="tbForm" href="#">BSR Add Form</a>
+                                </li>
+                                <li class="nav-item ceylonLog" onclick="changeTab('table')">
+                                    <a class="nav-link" id="tbTable" href="#">BSR View Table</a>
+                                </li>
+                            </ul>
+
+                            <!--customer form-->
+                            <div class="row p-3 formB" id="divFrom">
+                                <div class="col-md-12">
+                                    <form class="" id="employeeform" onsubmit="return false">
+
+                                        <div class="row">
+                                            <div class="col-md-12" style=" text-align: right;">
+                                                <span class="ceylonLog" style="color: red;">* Required </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <!-- main Form -->
+                                            <div class="col-md-5">
+                                                <!-- province code -->
+                                                <div class="row mt-2">
+                                                    <div class="col-md-4">
+                                                        <label for="cmdProcode" class="ceylonLog"><b>Province Code : <span style="color: red;">*</span></b></label>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <!-- <input type="text" id="proCode" onkeyup="textBinder(proCode,'^([a-zA-Z0-9]+[/.])*','bsr','procode','oldbsr');" class="form-control" placeholder="Enter Province Code" data-toggle="tooltip" title="Enter the Province Code" data-placement="top"> -->
+                                                        <div class="input-group flex-nowrap">
+                                                            <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                                                            <select id="cmdProcode" onchange="comboBoxBinder(cmdProcode,'','bsr','province_id','oldbsr')" class="form-control" data-toggle="tooltip" title="Select the Added by" data-placement="top"></select>
+                                                        </div>
+                                                        <!-- <select id="cmdProcode" onchange="comboBinder(cmdProcode,'','bsr','procode','oldbsr');" class="form-control" data-toggle="tooltip" title="Select the Added by" data-placement="top"></select> -->
+                                                    </div>
+                                                </div>
+                                                <!-- bsr year -->
+                                                <div class="row mt-2">
+                                                    <div class="col-md-4">
+                                                        <label for="bsrYear" class="ceylonLog"><b>BSR Year : <span style="color: red;">*</span></b></label>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="input-group flex-nowrap">
+                                                            <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                                                            <input type="text" id="bsrYear" readonly required onkeyup="textFieldBinder(bsrYear,'^[0-9]{4}$','bsr','year','oldbsr')"  class="form-control" placeholder="Enter the BSR Year " data-toggle="tooltip" title="Insert BSR Year" data-placement="top">
+                                                        </div>
+                                                        <!-- <input type="text" id="bsrYear" onkeyup="textBinder(bsrYear,'^[0-9]{4}$','bsr','bsryear','oldbsr');" class="form-control" placeholder="Enter the BSR Year " data-toggle="tooltip" title="Insert BSR Year" data-placement="top"> -->
+                                                    </div>
+                                                </div>
+                                                <!-- bsrcode -->
+                                                <div class="row mt-2">
+                                                    <div class="col-md-4">
+                                                        <label for="bsrCode" class="ceylonLog"><b>BSR Code : <span style="color: red;">*</span></b></label>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="input-group flex-nowrap">
+                                                            <span class="input-group-text"><i class="fas fa-file-contract"></i></span>
+                                                            <input type="text" id="bsrCode" disabled required  class="form-control" placeholder="Enter the BSR Code " data-toggle="tooltip" title="Insert the BSR Code" data-placement="top">
+                                                        </div>
+                                                        <!-- <input type="text" id="bsrCode" onkeyup="textBinder(bsrCode,'^([a-zA-Z0-9]+[/.])*','bsr','bsrcode','oldbsr');" class="form-control" placeholder="Enter the BSR Code " data-toggle="tooltip" title="Insert the BSR Code" data-placement="top"> -->
+                                                    </div>
+                                                </div>
+                                                <!-- bsr name -->
+                                                <div class="row mt-2">
+                                                    <div class="col-md-4">
+                                                        <label for="bsrName" class="ceylonLog"><b>BSR Name : <span style="color: red;">*</span></b></label>
+                                                    </div>
+                                                    <div class="col-md-8">
+
+                                                        <div class="input-group flex-nowrap">
+                                                            <span class="input-group-text"><i class="fas fa-file-alt"></i></span>
+                                                            <input type="text" readonly id="bsrName" required onkeyup="textFieldBinder(bsrName,'^([a-zA-Z0-9]+[/.])*','bsr','bsrname','oldbsr')" class="form-control" placeholder="Enter the BSR Name " data-toggle="tooltip" title="Insert the BSR Name" data-placement="top">
+                                                        </div>
+
+                                                        <!-- <input type="text" id="bsrName" onkeyup="textBinder(bsrName,'^([a-zA-Z0-9]+[/.])*','bsr','bsrname','oldbsr');" class="form-control" placeholder="Enter the BSR Name " data-toggle="tooltip" title="Insert the BSR Name" data-placement="top"> -->
+                                                    </div>
+                                                </div>
+                                                <!-- statr Date -->
+                                                <div class="row mt-2">
+                                                    <div class="col-md-4">
+                                                        <label for="StartDate" class="ceylonLog"><b>Start Date : <span style="color: red;">*</span></b></label>
+                                                    </div>
+                                                    <div class="col-md-8">
+
+                                                        <div class="input-group flex-nowrap">
+                                                            <span class="input-group-text"><i class="fas fa-calendar-check"></i></span>
+                                                            <input type="date" id="StartDate" onchange="textFieldBinder(StartDate,'^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$','bsr','startdate','oldbsr')" class="form-control" data-toggle="tooltip" title="Insert the Start date" data-placement="bottom">
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <!-- end Date -->
+                                                <div class="row mt-2">
+                                                    <div class="col-md-4">
+                                                        <label for="endDate" class="ceylonLog"><b>End Date : <span style="color: red;">*</span></b></label>
+                                                    </div>
+                                                    <div class="col-md-8">
+
+                                                        <div class="input-group flex-nowrap">
+                                                            <span class="input-group-text"><i class="fas fa-calendar-check"></i></span>
+                                                            <input type="date" id="endDate" onchange="textFieldBinder(endDate,'^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$','bsr','enddate','oldbsr')" class="form-control" data-toggle="tooltip" title="Insert the End date" data-placement="bottom">
+
+                                                        </div>
+
+                                                        <!-- <input type="date" id="endDate" onchange="textBinder(endDate,'^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$','bsr','enddate','oldbsr');" class="form-control" data-toggle="tooltip" title="Insert the End date" data-placement="bottom"> -->
+                                                    </div>
+                                                </div>
+                                                <!-- added Date -->
+                                                <div class="row mt-2">
+                                                    <div class="col-md-4">
+                                                        <label for="addedDate" class="ceylonLog"><b>Added Date : <span style="color: red;">*</span></b></label>
+                                                    </div>
+                                                    <div class="col-md-8">
+
+                                                        <div class="input-group flex-nowrap">
+                                                            <span class="input-group-text"><i class="fas fa-calendar-check"></i></span>
+                                                            <input type="date" id="addedDate"  class="form-control" data-toggle="tooltip" title="Insert the Added date" data-placement="bottom">
+                                                        </div>
+
+                                                        <!-- <input type="date" id="addedDate" onchange="textBinder(addedDate,'^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$','bsr','addeddate','oldbsr');" class="form-control" data-toggle="tooltip" title="Insert the Added date" data-placement="bottom"> -->
+                                                    </div>
+                                                </div>
+                                                <!-- bsr description -->
+                                                <div class="row mt-2">
+                                                    <div class="col-md-4">
+                                                        <label for="bsrDescription" class="ceylonLog"><b>Description : </b></label>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="input-group flex-nowrap">
+                                                            <span class="input-group-text"><i class="fas fa-sticky-note"></i></span>
+                                                            <textarea class="form-control form-control-sm" id="bsrDescription" placeholder="Enter the BSR Description" onkeyup="textFieldBinder(bsrDescription,'^.*$','bsr','description','oldbsr');" id="floatingTextarea2" row="2" data-toggle="tooltip"
+                                                                      title="Insert the Equipment Description" data-placement="top"></textarea>
+                                                        </div>
+
+                                                        <!-- <textarea class="form-control" id="bsrDescription" onkeyup="textBinder(bsrDescription,'^.*$','bsr','bsrdescription','oldbsr');" placeholder="Enter the BSR Description" id="floatingTextarea2" row="2" data-toggle="tooltip" title="Enter the Description"
+                                                            data-placement="top"></textarea> -->
+                                                    </div>
+                                                </div>
+                                                <!-- bsr status -->
+                                                <div class="row mt-2">
+                                                    <div class="col-md-4">
+                                                        <label for="cmdbsrStatus" class="ceylonLog"><b>BSR Status : <span style="color: red;">*</span></b></label>
+                                                    </div>
+                                                    <div class="col-md-8">
+
+                                                        <div class="input-group flex-nowrap">
+                                                            <span class="input-group-text"><i class="fas fa-star-half-alt"></i></span>
+                                                            <select id="cmdbsrStatus" onchange="comboBoxBinder(cmdbsrStatus,'','bsr','bsrstatus_id','oldbsr')" class="form-control" data-toggle="tooltip" title="Select the BSR Status" data-placement="top"></select>
+                                                        </div>
+
+                                                        <!-- <select id="cmdbsrStatus" onchange="comboBinder(cmdbsrStatus,'','bsr','bsrstatus','oldbsr');" class="form-control" data-toggle="tooltip" title="Select the BSR Status" data-placement="top"></select> -->
+                                                    </div>
+                                                </div>
+                                                <!-- added by -->
+                                                <div class="row mt-2">
+                                                    <div class="col-md-4">
+                                                        <label for="cmdaddedBy" class="ceylonLog"><b>Added By : <span style="color: red;">*</span></b></label>
+                                                    </div>
+                                                    <div class="col-md-8">
+
+                                                        <div class="input-group flex-nowrap">
+                                                            <span class="input-group-text"><i class="fas fa-user-shield"></i></span>
+                                                            <select id="cmdaddedBy"  class="form-control" data-toggle="tooltip" title="Select the Added by" data-placement="top"></select>
+                                                        </div>
+
+                                                        <!-- <select id="cmdaddedBy" onchange="comboBinder(cmdaddedBy,'','bsr','bsraddedby','oldbsr');" class="form-control" data-toggle="tooltip" title="Select the Added by" data-placement="top"></select> -->
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!-- innerForm -->
+                                            <div class="col-md-7">
+                                                <div class="card">
+                                                    <div class="card-header cardhead">
+                                                        <h2 class="ceylonLog cardForheader"> <img class="cnew" src="../resources/image/cnew.jpg" alt=""> BSR Sub Category</h2>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <!-- bsr category -->
+
+                                                        <div class="row mt-2">
+                                                            <div class="col-md-4">
+
+                                                                <label for="cmdCategory" class="ceylonLog"><b>BSR Category: <span style="color: red;">*</span></b></label>
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <div class="input-group flex-nowrap">
+                                                                    <span class="input-group-text"><i class="fas fa-file-invoice"></i></span>
+                                                                    <select required id="cmdCategory" onchange="cmbCategoryCH();" class="form-control" data-toggle="tooltip" title="Select the BSR Category" data-placement="top"></select>
+                                                                </div>
+                                                                <!-- <select id="cmdCategory" onchange="comboBinder(cmdCategory,'','bsrcategory','bsrcategoryset','oldbsrcategory');" class="form-control" data-toggle="tooltip" title="Select the BSR Category" data-placement="top"></select> -->
+                                                            </div>
+                                                        </div>
+                                                        <!-- bsr sub category -->
+
+                                                        <div class="row mt-2">
+                                                            <div class="col-md-4">
+                                                                <label for="cmdSubCategory" class="ceylonLog"><b>BSR Sub Category: <span style="color: red;">*</span></b></label>
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <div class="input-group flex-nowrap">
+                                                                    <span class="input-group-text"><i class="fas fa-file-alt"></i></span>
+                                                                    <select id="cmdSubCategory"  onchange="comboBoxBinder(cmdSubCategory,'','BSRHasBSRsubcategory','bsrsubcategory_id','oldBSRHasBSRsubcategory');" class="form-control" data-toggle="tooltip" title="Select the Sub BSR Category" data-placement="top"></select>
+                                                                </div>
+                                                                <!-- <select id="cmdSubCategory" onchange="comboBinder(cmdSubCategory,'','bsrcategory','bsrsubcategoryset','oldbsrcategory');" class="form-control" data-toggle="tooltip" title="Select the Sub BSR Category" data-placement="top"></select> -->
+                                                            </div>
+                                                        </div>
+                                                        <!-- itemCode -->
+                                                        <div class="row mt-2">
+                                                            <div class="col-md-4">
+                                                                <label for="itemCode" class="ceylonLog"><b>Item Code : <span style="color: red;">*</span></b></label>
+
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <div class="input-group flex-nowrap">
+                                                                    <span class="input-group-text"><i class="fas fa-file-contract"></i></span>
+                                                                    <input type="text" id="itemCode"  onkeyup="textFieldBinder(itemCode,'^([A-Z]{1}[0-9]{3})$','BSRHasBSRsubcategory','itemcode','oldBSRHasBSRsubcategory')" required  class="form-control" placeholder="Enter the Item Code" data-toggle="tooltip" title="Insert the Item Code" data-placement="top">
+                                                                    <span class="input-group-text" data-toggle="tooltip" title="Item Code Only use 4 digits.Ex: Axxx" data-placement="right"> <i class="fas fa-question-circle"></i></span>
+                                                                </div>
+                                                                <!-- <input type="text" id="itemCode" onkeyup="textBinder(itemCode,'^([a-zA-Z0-9]+[/.])*','bsrcategory','itemcode','oldbsrcategory');" class="form-control" placeholder="Enter the Item Code" data-toggle="tooltip" title="Insert the Item Code" data-placement="top"> -->
+
+                                                            </div>
+                                                        </div>
+                                                        <!-- description -->
+                                                        <div class="row mt-2">
+                                                            <div class="col-md-4">
+                                                                <label for="subCatDescription" class="ceylonLog"><b>Description : <span style="color: red;">*</span></b></label>
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <div class="input-group flex-nowrap">
+                                                                    <span class="input-group-text"><i class="fas fa-sticky-note"></i></span>
+                                                                    <textarea class="form-control" id="subCatDescription" onkeyup="textFieldBinder(subCatDescription,'^.*$','BSRHasBSRsubcategory','description','oldBSRHasBSRsubcategory')"  placeholder="Enter the Description"  row="2" data-toggle="tooltip" title="Insert the Description"
+                                                                           required   data-placement="top"></textarea>
+                                                                    <span class="input-group-text" data-toggle="tooltip" title="Describe the Sub Category Item. Ex: Roof removing tiles and timber" data-placement="bottom"> <i class="fas fa-question-circle"></i></span>
+                                                                </div>
+
+                                                                <!-- <textarea class="form-control" id="subCatDescription" onkeyup="textBinder(subCatDescription,'^.*$','bsrcategory','bsrsubdescription','oldbsrcategory');" placeholder="Enter the Description" id="floatingTextarea2" row="2" data-toggle="tooltip" title="Insert the Description"
+                                                                    data-placement="top"></textarea> -->
+                                                            </div>
+                                                        </div>
+                                                        <!-- item Unit -->
+                                                        <div class="row mt-2">
+                                                            <div class="col-md-4">
+                                                                <label for="cmditemUnit" class="ceylonLog"><b>Item Unit: <span style="color: red;">*</span></b></label>
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <div class="input-group flex-nowrap">
+                                                                    <span class="input-group-text"><i class="fas fa-chart-bar"></i></span>
+                                                                    <select id="cmditemUnit" class="form-control" onchange="comboBoxBinder(cmditemUnit,'','BSRHasBSRsubcategory','itemunit_id','oldBSRHasBSRsubcategory')" data-toggle="tooltip" title="Select the Item Unit" data-placement="top"></select>
+                                                                </div>
+                                                                <!-- <select id="cmditemUnit" onchange="comboBinder(cmditemUnit,'','bsrcategory','bsritemunit','oldbsrcategory');" class="form-control" data-toggle="tooltip" title="Select the Item Unit" data-placement="top"></select> -->
+                                                            </div>
+                                                        </div>
+                                                        <!-- bsr rate -->
+                                                        <div class="row mt-2">
+                                                            <div class="col-md-4">
+                                                                <label for="bsrRate" class="ceylonLog"><b>BSR Rate : <span style="color: red;">*</span></b></label>
+
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <div class="input-group flex-nowrap">
+                                                                    <span class="input-group-text" id="addon-wrapping"><b>Rs</b></span>
+                                                                    <input type="text" required id="bsrRate" onkeyup="textFieldBinder(bsrRate,'^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\\.[0-9]{2})?$','BSRHasBSRsubcategory','bsrrate','oldBSRHasBSRsubcategory')"  class="form-control" placeholder="Enter the BSR Rate" data-toggle="tooltip" title="Insert the BSR Rate"
+                                                                           data-placement="top">
+                                                                    <span class="input-group-text" data-toggle="tooltip" title="Only Use the Numbers for BSR Rate.Ex: Rs.716.00 " data-placement="bottom"> <i class="fas fa-question-circle"></i></span>
+                                                                </div>
+                                                                <!-- <input type="text" id="bsrRate" onkeyup="textBinder(bsrRate,'^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\.[0-9]{2})?$','bsrcategory','bsrrate','oldbsrcategory');" class="form-control" placeholder="Enter the BSR Rate" data-toggle="tooltip" title="Insert the BSR Rate"
+                                                                    data-placement="top"> -->
+
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- innerButton -->
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                    <div class="text-right mt-2">
+                                                                        <button class="btn btn-outline-success ceylonLog" type="button" onclick="btnInnerAddMC();" id="btnInnerAdd" style="width: 25%">
+                                                                            <i class="fas fa-plus-circle mr-2"></i> Add
+                                                                        </button>
+
+                                                                        <button class="btn btn-outline-warning ceylonLog" type="button" onclick="btnInnerUpdateMC();" id="btnInnerUpdate" style="width: 25%">
+                                                                            <i class="fas fa-plus-circle mr-2"></i> Update
+                                                                        </button>
+
+                                                                        <button class="btn btn-outline-info ceylonLog" type="button" onclick="btnInnerClearMC();" id="btnInnerClear"
+                                                                                style="width: 25%"> <i class="fas fa-recycle mr-2"></i>Clear</button>
+                                                                    </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- innerTable -->
+                                                        <div class="row mt-2">
+                                                           <div class="col-md-12">
+
+                                                               <div id="accordion">
+                                                                   <div class="card">
+                                                                       <div class="card-header cardForheader"  style="background-color:#bae0f1;" id="headingThree">
+                                                                           <h5 class="mb-0">
+                                                                               <button class="btn btn-link collapsed" style="text-decoration: none;"  data-toggle="collapse" data-target="#collapseBSRtable" aria-expanded="false" aria-controls="collapseBSRtable">
+                                                                                   <h4 class="ceylonLog"><i class="fas fa-table"></i> BSR Sub Category Table</h4>
+                                                                               </button>
+                                                                           </h5>
+                                                                       </div>
+                                                                       <div id="collapseBSRtable" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                                                           <div class="card-body">
+
+                                                                               <div class="row" id="InnerSubtasktable" style="height: 200px;overflow-y:scroll;">
+                                                                                   <script>
+                                                                                       var metadatainner = [
+                                                                                           {name: 'BSR Category', search: true, datatype: 'text', property: 'bsrsubcategory_id.bsrcategory_id.name'},
+                                                                                           {name: 'BSR Sub Category', search: true, datatype: 'text', property: 'bsrsubcategory_id.name'},
+                                                                                           {name: 'Item Code', search: true, datatype: 'text', property: 'itemcode'},
+                                                                                           {name: 'Item Unit', search: true, datatype: 'text', property: 'itemunit_id.name'},
+                                                                                           {name: 'BSR Rate (Rs)', search: true, datatype: 'amount', property: 'bsrrate'},
+
+                                                                                       ];
+
+
+                                                                                       tableForInnerForm("InnerSubtasktable","tblInnersubtask",metadatainner,true);
+                                                                                   </script>
+                                                                               </div>
+                                                                           </div>
+                                                                       </div>
+                                                                   </div>
+                                                               </div>
+                                                           </div>
+
+
+
+
+
+
+
+
+
+<!--                                                            <script>-->
+<!--                                                                var metadatainner = [-->
+<!--                                                                    {name: 'BSR Category', search: true, datatype: 'text', property: 'bsrsubcategory_id.bsrcategory_id.name'},-->
+<!--                                                                    {name: 'BSR Sub Category', search: true, datatype: 'text', property: 'bsrsubcategory_id.name'},-->
+<!--                                                                    {name: 'Item Code', search: true, datatype: 'text', property: 'itemcode'},-->
+<!--                                                                    {name: 'Item Unit', search: true, datatype: 'text', property: 'itemunit_id.name'},-->
+<!--                                                                    {name: 'BSR Rate (Rs)', search: true, datatype: 'amount', property: 'bsrrate'},-->
+
+<!--                                                                ];-->
+
+<!--                                                                tableForInnerForm("InnerSubtasktable","tblInnersubtask",metadatainner,true);-->
+<!--                                                            </script>-->
+
+<!--                                                            <table class="table table-hover table-bordered " id="">-->
+<!--                                                                <thead class="thead-dark">-->
+<!--                                                                <tr>-->
+<!--                                                                    <th>Index</th>-->
+<!--                                                                    <th>BSR Category</th>-->
+<!--                                                                    <th>BSR Sub Category</th>-->
+<!--                                                                    <th>Item Code</th>-->
+<!--                                                                    <th>Item Unit</th>-->
+<!--                                                                    <th>BSR Rate</th>-->
+<!--                                                                    <th>Modify</th>-->
+<!--                                                                </tr>-->
+<!--                                                                </thead>-->
+<!--                                                                <tbody></tbody>-->
+<!--                                                            </table>-->
+                                                        </div>
+
+
+
+                                                    </div>
+                                                    <div class="card-footer">
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                        <!--main buttons -->
+                                        <div class="text-center mt-3">
+                                            <button class="btn clearAllbtn ceylonLog" type="button" id="btnClear" style="width: 25%">
+                                                <i class="fas fa-recycle mr-2"></i> Clear
+                                            </button>
+                                            <button class="btn updateAllbtn ceylonLog" type="submit" id="btnUpdate"
+                                                style="width: 25%"> <i class="fas fa-edit mr-2"></i> Update</button>
+                                            <button class="btn addAllbtn ceylonLog" style="width: 25%" type="submit" id="btnAdd">
+                                                <i class='fas fa-plus-circle mr-2'></i>Add
+                                                   </button>
+
+                                        </div>
+
+
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="row p-3 formcontent" id="divTable">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-9">
+
+<!--                                            <input type="button" class="btn tblbtnprint font-weight-bold" value="Print Table"-->
+<!--                                                   id="btnPrintTable" onclick="btnPrintTableMC()"/>-->
+
+                                            <button  id="btnPrintTable" class="btn btn-info ceylonLog" onclick="btnPrintTableMC()"><i class='fas fa-print mr-2'></i>Print Table</button>
+                                        </div>
+                                        <div class="col-md-3">
+
+                                            <div class="float-right input-group">
+                                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+                                                <input placeholder="Search" class="form-control" type="text"
+                                                       id="txtSearchName"/>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+<!--                                    <input type="button" class="btn tblbtnprint font-weight-bold" value="Print Table"-->
+<!--                                           id="btnPrintTable" onclick="btnPrintTableMC()"/>-->
+<!--                                    -->
+<!--                                    <div class="float-right input-group">-->
+<!--                                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>-->
+<!--                                        <input placeholder="Search" class="form-control" type="text"-->
+<!--                                               id="txtSearchName"/>-->
+<!--                                    </div>-->
+
+                                </div>
+
+
+                                <hr/>
+                                <div class="table-responsive" id="tableParent" class="table-container ml-2">
+
+                                    <script>
+
+                                        function getNameColumn(ob) {
+                                            return ob.callingname + "(" + ob.number + ")";
+                                        }
+
+                                        var metadata = [
+                                            {name: 'Pro_Code', search: true, datatype: 'text', property: 'province_id.name'},
+                                            {name: 'BSR Year', search: true, datatype: 'text', property: 'year'},
+                                            {name: 'BSR Code', search: true, datatype: 'text', property: 'bsrcode'},
+                                            {name: 'BSR Name', search: true, datatype: 'text', property: 'bsrname'},
+                                            {name: 'Start Date', search: true, datatype: 'text', property: 'startdate'},
+                                            {name: 'End Date', search: true, datatype: 'text', property: 'enddate'},
+                                            {
+                                                name: 'Status',
+                                                search: true,
+                                                datatype: 'text',
+                                                property: 'bsrstatus_id.name'
+                                            },
+                                            {
+                                                name: 'Added By',
+                                                search: true,
+                                                datatype: 'text',
+                                                property: 'employee_id.callingname'
+                                            }
+                                        ];
+                                        table("tableParent", "tblBsr", metadata, true);
+
+                                    </script>
+
+
+                                </div>
+
+                                <div>
+                                    <div style="display: inline-block ; float: left">
+                                        <select class="form-control input" id="cmbPageSize"
+                                                style="width: 80px;">
+                                            <option selected value="5">5</option>
+                                            <option value="10">10</option>
+                                            <option value="15">15</option>
+                                            <option value="20">20</option>
+<!--                                            <option value="1000">1000</option>-->
+                                        </select>
+                                        <script>
+                                            cmbPageSize.onchange = function chnagePageSize() {
+                                                activepage = 1;
+                                                btnSearchMC();
+                                            };
+                                        </script>
+                                    </div>
+                                    <div style="display: inline-block; margin-left: 10px;">
+                                        <ul id="pagination" class="pagination"></ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="card-footer">
+<!--                            <div id="err">-->
+<!--                                <h3>Error Log</h3>-->
+<!--                            </div>-->
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!--Category Add End-->
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="dataviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 1200px" role="document">
+        <div class="modal-content">
+            <div class="modal-header cardhead">
+                <h3 class="modal-title cardForheader" id="exampleModalLabel"><img class="cnew" src="../resources/image/cnew.jpg"> <span>BSR Details</span> </h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="background-image: linear-gradient(rgba(255, 248, 248, 0.640),rgba(247, 237, 237, 0.80)) ,url('resources/image/exc.jpg')">
+                <div class="row">
+                    <div class="col-md-12  text-right">
+                        <button type="button" style="background-color: #77b9b9" class="btn ceylonLog" onclick="btnPrintRowMC();">Print Page</button>
+                    </div>
+                </div>
+<!--                <div class="row">-->
+<!--                    <div class="col-md-6">-->
+<!--                        <p class="ceylonLog"><img style="width: 38px;" class="cnew" src="../resources/image/cnew.jpg"></p>-->
+<!--                        <span  style="color: #0f6674!important;margin-top: -18px;">-->
+<!--                            Construction of Ceylon Engineering<br>-->
+<!--                            16/C Aviriya Rd,<br>-->
+<!--                            Alubomulla,Panadura.<br>-->
+<!--                            Tel: 0777343425/0777353526-->
+<!--                        </span>-->
+
+<!--                    </div>-->
+<!--                    <div class="col-md-6 text-left">-->
+<!--                    </div>-->
+<!--                </div>-->
+                <table id="printformtable"  class="mt-5 table table-bordered table-striped">
+                    <tbody>
+                    <tr>
+                        <th>Province Code  :</th>
+                        <td id="tdprocode"></td>
+                        <th>BSR Year :</th>
+                        <td id="tdyear"></td>
+                    </tr>
+
+                    <tr>
+                        <th>BSR Code :</th>
+                        <td id="tdcode"></td>
+                        <th>BSR Name :</th>
+                        <td id="tdname"></td>
+                    </tr>
+
+                    <tr>
+                        <th>Start Date :</th>
+                        <td id="tdstatrdate"></td>
+                        <th>End Date :</th>
+                        <td id="tdenddate"></td>
+                    </tr>
+
+                    <tr>
+                        <th>Added Date :</th>
+                        <td id="tdaddeddate"></td>
+                        <th>Description :</th>
+                        <td id="tddescription"></td>
+                    </tr>
+
+                    <tr>
+                        <th>BSR Status :</th>
+                        <td id="tdstatus"></td>
+                        <th>BSR Added By  :</th>
+                        <td id="tdaddedby"></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="4" id="tdPrintInner">
+                            <script>
+                                var metadatainner = [
+                                    {name: 'BSR Category', search: true, datatype: 'text', property: 'bsrsubcategory_id.bsrcategory_id.name'},
+                                    {name: 'BSR Sub Category', search: true, datatype: 'text', property: 'bsrsubcategory_id.name'},
+                                    {name: 'Item Code', search: true, datatype: 'text', property: 'itemcode'},
+                                    {name: 'Item Unit', search: true, datatype: 'text', property: 'itemunit_id.name'},
+                                    {name: 'BSR Rate', search: true, datatype: 'amount', property: 'bsrrate'},
+
+                                ];
+
+                                tableForInnerForm("tdPrintInner","tblInnerrowprint",metadatainner,false);
+                            </script>
+
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+<!--            <div class="modal-footer">-->
+<!--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--                <button type="button" class="btn btn-primary" onclick="btnPrintRowMC();">Print Row</button>-->
+<!--            </div>-->
+        </div>
+    </div>
+</div>
+
+<div class="overlay"></div>
+
+<!-- Settings Modal-->
+<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog"
+     aria-labelledby="settingsModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content" id="modalContent">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle"><i
+                        class="fas fa-cog"></i> Settings</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="changePasswordForm" onsubmit="return false">
+                    <div class="form-row">
+                        <!-- Username -->
+                        <div class="form-group col-md-12">
+                            <label for="txtUsernameView" class="text-blue">
+                                <b>Username</b>
+                            </label>
+                            <div readonly class="form-control-plaintext"
+                                 id="txtUsernameView"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Current Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtCurrentPassword"
+                                   class="text-blue"><b>Current Password</b> <i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtCurrentPassword"
+                                   onkeyup="textFieldBinder(txtCurrentPassword, '^[0-9]{5,}$', 'changePassword', 'currentPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- New Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtNewPassword" class="text-blue"><b>New
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtNewPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', '', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Confirm Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtConfirmPassword"
+                                   class="text-blue"><b>Confirm
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtConfirmPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', 'newPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="brnClosechnagepasswordmodle" class="btn btn-secondary" data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary"
+                        onclick="btnSaveChangePasswordMC()">Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

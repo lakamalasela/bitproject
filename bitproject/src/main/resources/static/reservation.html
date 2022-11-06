@@ -1,0 +1,2184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ceylon Engineering : Reservation Management </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/bootstrap/css/font-awesome.min.css">
+
+    <link rel="icon" href="resources/image/cnew.jpg" type="image/x-icon">
+
+    <!-- google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+    <!--google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Merriweather+Sans:wght@500&display=swap" rel="stylesheet">
+
+
+    <style>
+        .planAddModal{
+            max-width: 800px !important;
+        }
+        .paymentModal{
+            max-width: 1200px !important;
+        }
+        .showDetails{
+            font-size: 13px;
+        }
+
+        .viewModel{
+            max-width: 900px;
+        }
+        .tdview{
+            font-size: 12px;
+        }
+
+        .table-container {
+            width: auto;
+            overflow-x: scroll !important;
+        }
+
+        .tooltip-inner {
+            background-color: #f00;
+        }
+        .Cuscmbsearch .select2-selection{
+            width: 322px !important;
+            height: 38px !important;
+            padding: 3px !important;
+        }
+        .Cuscmbsearch .select2-container{
+            width: 322px !important;
+
+        }
+        .Procmbsearch .select2-selection{
+            width: 322px !important;
+            height: 38px !important;
+            padding: 3px !important;
+        }
+        .Procmbsearch .select2-container{
+            width: 322px !important;
+
+        }
+        .Housepartcmbsearch .select2-container{
+            width: 268px !important;
+            height: 36px !important;
+        }
+        .Housepartcmbsearch  .select2-selection{
+            width: 268px !important;
+            padding: 3px !important;
+            height: 36px !important;
+        }
+
+    </style>
+
+
+    <script defer src="resources/fontawesome/js/solid.js"></script>
+    <script defer src="resources/fontawesome/js/fontawesome.js"></script>
+
+
+
+    <script src="resources/jquery/jquery-3.4.1.min.js"></script>
+    <script src="resources/jquery/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="resources/jquery/popper.min.js"></script>
+    <script src="resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="resources/script/common.bitproject.js"></script>
+    <script src="resources/script/innertablefunctions.js"></script>
+    <script src="resources/script/mainWindow.js"></script>
+    <script src="reservation.js"></script>
+
+    <!--select2-->
+    <link rel="stylesheet" href="resources/select2/css/select2.min.css">
+    <script src="resources/select2/js/select2.min.js"></script>
+
+
+    <link rel="stylesheet" href="resources/style/home.css">
+    <link rel="stylesheet" href="resources/style/common.css">
+    <link rel="stylesheet" href="resources/style/side4.css">
+    <script src="resources/script/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="resources/style/reservation.css">
+
+    <!-- check box-->
+
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap4-toggle.min.css">
+    <script src="resources/bootstrap/js/bootstrap4-toggle.min.js"></script>
+
+
+    <link href='resources/style/clock.css' rel='stylesheet' />
+    <script src='resources/script/clock.js'></script>
+    <!--    <script src="resources/jquery/jquery-3.3.1.slim.min.js"></script>-->
+
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar" style="background-image: linear-gradient(rgba(0, 0, 0, 0.870),rgba(49, 183, 170, 0.75)) ,url('resources/image/ver.jpg')">
+        <div class="sidebar-header">
+
+            <h3><img class="cnew" src="../resources/image/cnew.jpg"><span>Ceylon Engineering</span> </h3>
+            <strong><img class="cnew" src="../resources/image/cnew.jpg"></strong>
+        </div>
+
+        <ul class="list-unstyled components">
+            <li>
+                <a href="http://localhost:8080/mainwindow" data-toggle="collapse" aria-expanded="false">
+                    <i class="fas fa-tachometer-alt"></i><span class="viewPara"> &nbsp;Dashboard</span>
+                </a>
+
+            </li>
+
+            <li class="USER">
+                <a href="http://localhost:8080/user">
+                    <i class="fas fa-user-cog"></i><span class="viewPara">&nbsp; User</span>
+                </a>
+            </li>
+
+            <li class="PRIVILAGE">
+                <a href="http://localhost:8080/privilage">
+                    <i class="fas fa-user-shield"></i><span class="viewPara">&nbsp; Privilege</span>
+                </a>
+            </li>
+
+            <li>
+                <a  href="#customerSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-user-tie"></i> <span class="viewPara"> &nbsp;Customer</span>
+                </a>
+                <ul class="collapse list-unstyled" id="customerSubmenu">
+                    <li class="CUSTOMER">
+                        <a href="http://localhost:8080/customer"><i class="fas fa-user-plus"></i> Customer Add</a>
+                    </li>
+                    <li class="CUSTOMERPAYMENT">
+                        <a href="http://localhost:8080/cuspayment"><i class="fas fa-hand-holding-usd"></i> Customer Payment</a>
+                    </li>
+                    <li class="RESERVATIONPROGRESS">
+                        <a href="http://localhost:8080/rprogress"><i class="fas fa-book"></i> Reservation Progress</a>
+                    </li>
+
+
+                </ul>
+            </li>
+
+            <li>
+
+                <a href="#serviceSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i><span class="viewPara"> &nbsp;Service</span>
+                </a>
+                <ul class="collapse list-unstyled" id="serviceSubmenu">
+                    <li class="SERVICE">
+                        <a href="http://localhost:8080/service"><i class="fas fa-concierge-bell"></i> Main Services Add</a>
+                    </li>
+                    <li class="PLAN">
+                        <a href="http://localhost:8080/plan"><i class="fas fa-ruler-combined"></i> Service Plan</a>
+                    </li>
+
+                </ul>
+            </li>
+
+
+
+            <li>
+                <a  href="#reservationSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-book-open"></i> <span class="viewPara"> &nbsp;Reservation</span>
+                </a>
+                <ul class="collapse list-unstyled" id="reservationSubmenu">
+                    <li class="RESERVATION">
+                        <a href="http://localhost:8080/reservation"><i class="fas fa-sticky-note"></i> Reservation Add</a>
+                    </li>
+                    <li class="DESIGNERASSIGNMENT">
+                        <a href="http://localhost:8080/designerassign"><i class="fas fa-user-edit"></i> Designer Add</a>
+                    </li>
+                    <li class="QSASSIGNMENT">
+                        <a href="http://localhost:8080/qsassign"><i class="fas fa-user-plus"></i> QS Add</a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="ESTIMATION">
+                <a href="http://localhost:8080/estimation">
+                    <i class="fas fa-pencil-ruler"></i><span class="viewPara">&nbsp; Estimation</span>
+                </a>
+            </li>
+            <li class="BSR">
+                <a href="http://localhost:8080/bsr">
+                    <i class="fas fa-book"></i><span class="viewPara">&nbsp; BSR</span>
+                </a>
+            </li>
+            <li>
+                <a  href="#equipmentSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-tools"></i> <span class="viewPara"> &nbsp;Equipment</span>
+                </a>
+                <ul class="collapse list-unstyled" id="equipmentSubmenu">
+                    <li class="EQUIPMENT">
+                        <a href="http://localhost:8080/equipment"><i class="fas fa-toolbox"></i></i> Equipmet Add</a>
+                    </li>
+                    <li class="EQSHIFTMENT">
+                        <a href="http://localhost:8080/eqshiftment"><i class="fas fa-toolbox"></i> Equipment Shiftment</a>
+                    </li>
+                    <li class="EQINVENTORY">
+                        <a href="http://localhost:8080/eqinventory"><i class="fas fa-toolbox"></i> Equipment Inventory</a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li>
+                <a  href="#employeeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-id-card"></i> <span class="viewPara"> &nbsp;Employee</span>
+                </a>
+                <ul class="collapse list-unstyled" id="employeeSubmenu">
+                    <li class="EMPLOYEE">
+                        <a href="http://localhost:8080/employee"><i class="fas fa-id-card-alt"></i></i> Employee Add</a>
+                    </li>
+                    <li class="EMPSHIFTMENT">
+                        <a href="http://localhost:8080/empshiftment"><i class="fas fa-users-cog"></i> Employee Shiftment</a>
+                    </li>
+
+
+                </ul>
+            </li>
+
+
+            <li>
+                <a  href="#reportSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-book"></i> <span class="viewPara"> &nbsp;Reports</span>
+                </a>
+                <ul class="collapse list-unstyled" id="reportSubmenu">
+
+                    <li>
+                        <a href="http://localhost:8080/report/cusarrears"><i class="fas fa-users-cog"></i> Customer Arrears Report</a>
+                    </li>
+
+                    <li>
+                        <a href="http://localhost:8080/report/noassignemp"><i class="fas fa-id-card-alt"></i></i> Available Employee Report</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/report/empworkingusage"><i class="fas fa-users-cog"></i> Employee Working Progress Report</a>
+                    </li>
+
+                    <li>
+                        <a href="http://localhost:8080/report/expemp"><i class="fas fa-users-cog"></i> Expected Employee Report</a>
+                    </li>
+
+                    <li>
+                        <a href="http://localhost:8080/report/eqallocation"><i class="fas fa-toolbox"></i> Expected Equipment Available Report</a>
+                    </li>
+
+
+                </ul>
+            </li>
+
+
+
+        </ul>
+
+
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between"  data-spy="affix" data-offset-top="197" style="padding: 8px 8px;">
+            <div class="container-fluid">
+                <div class="float-left">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span></span>
+                    </button>
+
+                    <button type="button" class="btn btn-info ml-3">
+                        <a href="http://localhost:8080/mainwindow"> <i class="fa fa-home"></i></a>
+                        <span></span>
+                    </button>
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="privilegeSet" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header" style="background-color: #bae0f1;">
+                                    <h5 class="modal-title ceylonLog" style="color:#232348;"  id="exampleModalLongTitle">Choose the Main Modules</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" style="border-radius: 10px !important;padding: 26px;background-image: linear-gradient(rgba(255, 248, 248, 0.640),rgba(247, 237, 237, 0.80)) ,url('resources/image/exc.jpg')">
+                                    <!--start ul-->
+                                    <!--card start-->
+                                    <div class="card mainBlock">
+                                        <div class="card-body" style="padding: 26px;background-image: linear-gradient(rgba(255, 248, 248, 0.640),rgba(247, 237, 237, 0.80)) ,url('resources/image/exc.jpg')">
+                                            <div class="row">
+                                                <div class="col-md-4 block_other">
+                                                    <div class="text-center emp"
+                                                         onclick="window.location.assign('http://localhost:8080/employee')">
+                                                        <div class="card"   style="cursor: pointer;">
+                                                            <div class="card-header text-center" style="font-size:60px;color:#fff;background-color:#343a40;">
+                                                                <i class="fas fa-user-friends"></i>
+                                                            </div>
+                                                            <div class="card-body text-center" style="background-color: rgba(29,85,211,0.4);">
+                                                                <span style="font-weight: 600;font-size: 16px">Employee</span>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 block_other">
+                                                    <div class="text-center emp"
+                                                         onclick="window.location.assign('http://localhost:8080/user')">
+                                                        <div class="card"   style="cursor: pointer;">
+                                                            <div class="card-header text-center" style="font-size:60px;color:#fff;background-color:#343a40;">
+                                                                <i class="fas fa-user"></i>
+                                                            </div>
+                                                            <div class="card-body text-center" style="background-color: rgba(29,85,211,0.4);">
+                                                                <span style="font-weight: 600;font-size: 16px">USER</span>
+
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 block_other">
+                                                    <div class="text-center"
+                                                         onclick="window.location.assign('http://localhost:8080/privilage')">
+                                                        <div class="card"   style="cursor: pointer;">
+                                                            <div class="card-header text-center" style="font-size:60px;color:#fff;background-color:#343a40;">
+                                                                <i class="fas fa-user-lock"></i>
+                                                            </div>
+                                                            <div class="card-body text-center" style="background-color: rgba(29,85,211,0.4);">
+                                                                <span style="font-weight: 600;font-size: 16px">Privilege</span>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <!--card end  -->
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--modal end-->
+
+                    <!--employee,userprivilege start -->
+                    <button type="button" style="height: 38px;" class="btn btn-info ml-3 p-0" data-toggle="modal" data-target="#privilegeSet">
+                        <a class="nav-link justify-content-center"  href="#"><i
+                                class="fa fa-th"></i> </a>
+
+                    </button>
+
+
+
+
+
+                    <!--employee,user,privilege -->
+
+
+                </div>
+
+                <div class="AnimateShadow">
+                    <h2 class="ceylonHead"> <i class="fas fa-building mr-2 animatesymboll"></i>Ceylon Engineering </h2>
+                </div>
+
+                <div id="clockdate">
+                    <div class="clockdate-wrapper">
+                        <div id="clock"></div>
+                        <div id="date"></div>
+                    </div>
+                </div>
+
+                <div class="float-right" style="margin-top: 10px">
+                    <p class="font-weight-bold text-white ceylonLog"> Loged as : <a href="#" class="badge badge-success"><span id="spnDesignation"> </span></a></p>
+                </div>
+                <form class="form-inline my-2 my-lg-0 mr-2 float-right">
+
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" style="width: 160px" href="#"
+                                   id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    <img id="profileImage" class="profileImage">
+                                    <p class="loggedUserNameField d-inline" id="lblLogUser">123456</p>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="width: 189px;">
+<!--                                    <a class="dropdown-item" href="#"><i class="far fa-sliders-v"></i> View Profile</a>-->
+                                    <a class="dropdown-item" href="#" data-toggle="modal"
+                                       data-target="#settingsModal"><i class="far fa-sliders-v"></i> Change Password</a>
+                                    <a class="dropdown-item" href="#" onclick="btnSignoutMC()"><i
+                                            class="fas fa-sign-out-alt"></i> Sign Out</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </form>
+            </div>
+
+        </nav>
+        <!-- Content -->
+        <div class="container-fluid dashbordbody p-0">
+
+            <div class="row" id="ui">
+                <div class="col-md-12">
+                    <div class="card cardstyle bg-info">
+                        <div class="card-header text-left cardhead">
+                            <h2 class="ceylonLog cardForheader"><img class="cnew" src="../resources/image/cnew.jpg">Reservation Management</h2>
+                        </div>
+
+                        <div class="card-body" style="background-image: linear-gradient(rgba(255, 248, 248, 0.640),rgba(247, 237, 237, 0.80)) ,url('resources/image/exc.jpg')">
+
+                            <ul class="nav nav-tabs mb-2">
+                                <li class="nav-item ceylonLog" onclick="changeTab('form')">
+                                    <a class="nav-link active" id="tbForm" href="#">Reservation Add Form</a>
+                                </li>
+                                <li class="nav-item ceylonLog" onclick="changeTab('table')">
+                                    <a class="nav-link" id="tbTable" href="#">Reservation View Table</a>
+                                </li>
+                            </ul>
+
+                            <!--customer form-->
+                            <div class="row p-3 formB" id="divFrom">
+                                <div class="col-md-12">
+                                    <form class="" id="employeeform" onsubmit="return false">
+
+                                        <div class="row">
+                                            <div class="col-md-12 container-fluid text-right">
+                                                <span style="color: red;">* Required</span>
+                                            </div>
+                                        </div>
+                                        <!-- Main Details -->
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <fieldset class="border p-2">
+                                                    <legend class="w-9 legendMain ceylonLog">Main Details</legend>
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <label for="reservationCode" class="eqset ceylonLog"><b>Reservation Code : <span style="color: red;">*</span></b></label>
+                                                            <div class="input-group flex-nowrap">
+                                                                <span class="input-group-text"><i class="fas fa-book"></i></span>
+                                                                <input type="text" id="reservationCode" onkeyup="textFieldBinder(reservationCode,'^([a-zA-Z0-9]+[/.])*','reservation','reservationcode','oldreservation')" required class="form-control" placeholder="Enter the Reservation Code" data-toggle="tooltip" title="Insert the Reservation Code" data-placement="top">
+
+                                                            </div>
+                                                            <small  class="form-text autoLoad">Reservation Code Auto Load Here.</small>
+                                                        </div>
+                                                        <div class="col-md-4">
+
+
+                                                            <label for="projectTitle" class="eqset ceylonLog"><b>Project Title : <span style="color: red;">*</span></b></label>
+                                                            <div class="input-group flex-nowrap">
+                                                                <span class="input-group-text"><i class="fas fa-bookmark"></i></span>
+                                                                <textarea class="form-control" id="projectTitle" onkeyup="textFieldBinder(projectTitle,'^.*$','reservation','projecttitle','oldreservation')" required placeholder="Enter the Project Title" row="2" data-toggle="tooltip" title="Insert the Project Title" data-placement="top"></textarea>
+
+                                                                <!--                                                                <input type="text" id="projectTitle" onkeyup="textFieldBinder(projectTitle,'^.*$','reservation','projecttitle','oldreservation')" class="form-control" required placeholder="Enter the Project Title" data-toggle="tooltip" title="Insert the Project Title" data-placement="top">-->
+
+                                                            </div>
+                                                            <small  class="form-text text-muted">Add the customer service as the project title.</small>
+
+
+
+
+
+                                                        </div>
+
+                                                        <div class="col-md-4">
+
+
+                                                            <label for="projectLocation" class="eqset ceylonLog"><b>Project Location : <span style="color: red;">*</span></b></label>
+                                                            <div class="input-group flex-nowrap">
+                                                                <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                                                                <textarea type="text" id="projectLocation" onkeyup="textFieldBinder(projectLocation,'^.*$','reservation','projectlocation','oldreservation')" row="2"  required class="form-control" placeholder="Enter the Project Location" data-toggle="tooltip" title="Insert the Project Location" data-placement="top"></textarea>
+
+
+                                                            </div>
+                                                            <small  class="form-text text-muted">Add the customer's project loacted at.</small>
+
+
+
+
+
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mt-2">
+
+                                                        <div class="col-md-4">
+                                                            <label for="cmbServicename" class="eqset ceylonLog"><b>Service Name : <span style="color: red;">*</span></b></label>
+                                                            <div class="input-group flex-nowrap">
+                                                                <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
+                                                                <select id="cmbServicename" onchange="comboBoxBinder(cmbServicename,'','reservation','service_id','oldreservation')" data-toggle="tooltip" title="Select the Service Code" data-placement="bottom" class="form-control" data-toggle="tooltip" title="Insert the Service Code" data-placement="bottom"></select>
+
+                                                            </div>
+                                                            <small  class="form-text text-muted">Choose the Service Code of Project.</small>
+
+
+
+
+                                                        </div>
+                                                        <div class="col-md-4 Cuscmbsearch">
+
+
+                                                            <label for="cmbCustomer" class="eqset ceylonLog"><b>Customer : <span style="color: red;">*</span></b></label>
+                                                            <div class="input-group flex-nowrap">
+                                                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                                                <select id="cmbCustomer" onchange="comboBox2Binder(cmbCustomer,'','reservation','customer_id','oldreservation','Cuscmbsearch .select2-selection')" data-toggle="tooltip" title="Select the Cutomer" data-placement="bottom" class="form-control js-example-basic-single"></select>
+
+
+                                                            </div>
+                                                            <small  class="form-text text-muted">Choose the customer.</small>
+
+
+
+                                                            </div>
+                                                        <div class="col-md-4 Procmbsearch">
+                                                            <label for="cmbProvince" class="eqset ceylonLog"><b>Province : <span style="color: red;">*</span></b></label>
+                                                            <div class="input-group flex-nowrap">
+                                                                <span class="input-group-text"><i class="fas fa-map-signs"></i></span>
+                                                                <select id="cmbProvince" onchange="comboBox2Binder(cmbProvince,'','reservation','province_id','oldreservation','Procmbsearch .select2-selection')" data-toggle="tooltip" title="Select the Province" data-placement="bottom" class="form-control js-example-basic-single"></select>
+
+                                                            </div>
+                                                            <small class="form-text text-muted">Choose the customer's project located at Province.</small>
+
+
+
+
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mt-2">
+                                                        <div class="col-md-4">
+
+                                                            <label for="cmbSupervisor" class="eqset ceylonLog"><b>Supervisor : <span style="color: red;">*</span></b></label>
+                                                            <div class="input-group flex-nowrap">
+                                                                <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
+                                                                <select id="cmbSupervisor" onchange="comboBoxBinder(cmbSupervisor,'','reservation','supervisor_id','oldreservation')" data-toggle="tooltip" title="Select the Supervisor" data-placement="bottom" class="form-control" data-toggle="tooltip" title="Insert the Supervisor" data-placement="bottom"></select>
+
+
+                                                            </div>
+                                                            <small  class="form-text text-muted">Choose the Supervisor in Project.</small>
+
+
+
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label for="serviceCharge" class="eqset ceylonLog"><b>Service Charge: <span style="color: red;">*</span></b></label>
+                                                            <div class="input-group flex-nowrap">
+                                                                <span class="input-group-text"><b>Rs</b></span>
+                                                                <input type="text"  id="serviceCharge" class="form-control" readonly onkeyup="textFieldBinder(serviceCharge,'^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\\.[0-9]{2})?$','reservation','servicecharge','oldreservation');" placeholder="Enter the Service Charge" data-placement="top">
+
+
+
+                                                            </div>
+                                                            <small  class="form-text text-muted aload">Service Charge of project auto load here.</small>
+                                                        </div>
+
+                                                        <div class="col-md-4">
+
+
+                                                            <label for="cmbcontype" class="eqset ceylonLog"><b>Construction Type : <span style="color: red;">*</span></b></label>
+                                                            <div class="input-group flex-nowrap">
+                                                                <span class="input-group-text"><i class="fas fa-toolbox"></i></span>
+                                                                <select  id="cmbcontype" onchange="comboBoxBinder(cmbcontype,'','reservation','constructiontype_id','oldreservation')"  data-toggle="tooltip" title="Select the Construction Type" data-placement="bottom" class="form-control" data-toggle="tooltip" title="Select the the Construction Type" data-placement="bottom"></select>
+
+                                                            </div>
+                                                            <small class="form-text text-muted">Select your Construction Type.</small>
+
+                                                            <!--                                                            <label for="chkPlan" class="eqset ceylonLog"><b>Existing Plan OR New Plan : <span style="color: red;">*</span></b></label>-->
+<!--                                                            <div class="input-group flex-nowrap">-->
+<!--                                                                <span class="input-group-text"><i class="fas fa-file-signature"></i></span>-->
+<!--                                                                &lt;!&ndash; <select id="cmbService" data-toggle="tooltip" title="Select the Service Code" data-placement="bottom" class="form-control" data-toggle="tooltip" title="Insert the Service Code" data-placement="bottom"></select> &ndash;&gt;-->
+<!--                                                                &lt;!&ndash;<input type="checkbox" checked data-toggle="toggle" data-on="Required" data-off="Not Required" data-onstyle="success" data-offstyle="danger">&ndash;&gt;-->
+<!--                                                                &lt;!&ndash; checked daala thibboth default check welaa UI ekee pennanne &ndash;&gt;-->
+<!--                                                                <input type="checkbox" class="row" checked id="chkPlan" required-->
+<!--                                                                       data-toggle="toggle" data-on="Existing Plan" data-off="New Plan" data-onstyle="success" data-offstyle="danger"-->
+<!--                                                                       data-width="120" data-height="44"-->
+<!--                                                                       onchange="CheckBoxBinder(chkPlan, '', 'reservation',-->
+<!--                                                               'extplan', 'oldreservation', false)">-->
+
+<!--                                                            </div>-->
+<!--&lt;!&ndash;                                                            <small  class="form-text text-muted">Choose the Service Plan Type of Project.</small>&ndash;&gt;-->
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mt-2">
+                                                        <div class="col-md-4">
+                                                            <label for="cmbcontype" class="eqset ceylonLog"><b>Number of Floor : <span style="color: red;">*</span></b></label>
+                                                            <div class="input-group flex-nowrap">
+                                                                <span class="input-group-text"><i class="fas fa-toolbox"></i></span>
+                                                                <input type="number" readonly id="NumberOfFloor"  required class="form-control" placeholder="Number Of Floor Auto Load" data-toggle="tooltip" title="Insert the Number Of Floor" data-placement="top">
+                                                            </div>
+                                                            <small class="form-text autoLoad">Number Of Floor Auto Load Here.</small>
+
+                                                        </div>
+                                                        <div class="col-md-4"></div>
+
+                                                        <div class="col-md-4">
+
+                                                            <label for="cmbcontype" class="eqset ceylonLog"><b>Payment Details:</b></label>
+
+
+                                                            <div class="input-group flex-nowrap">
+
+                                                                <h5><button id="paymentDetailsAdd" style="width: 160px;"  type="button" class="btn btn-primary" data-toggle="modal" data-target="#paymentAdd"><span class="ceylonLog">Payment Details</span></button></h5>
+
+                                                            </div>
+<!--                                                            <small class="form-text text-muted">Click the Add to Payment Details.</small>-->
+
+                                                            <!-- Add Payment Details-->
+
+
+                                                            <!-- Modal -->
+                                                            <div class="modal fade" id="paymentAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog paymentModal" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header" style="background-color:#bae0f1">
+                                                                            <h3 class="modal-title cardForheader"><i class="fas fa-money-check-alt" style="color: #007bff"></i> <span class="ceylonLog" style="color: #007bff"> Payment Details</span></h3>
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body" style="border-style: groove;background-image: linear-gradient(rgba(255, 248, 248, 0.640),rgba(223, 208, 208, 0.80))">
+
+                                                                            <div class="row">
+                                                                                <div class="col-md-3">
+                                                                                    <label for="totalCharge" class="eqset ceylonLog"><b>Total Charge : <span style="color: red;">*</span></b></label>
+                                                                                    <div class="input-group flex-nowrap">
+                                                                                        <span class="input-group-text"><b>Rs</b></span>
+                                                                                        <input type="text" readonly id="totalCharge" onkeyup="textFieldBinder(totalCharge,'^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\\.[0-9]{2})?$','reservation','totalcharge','oldreservation')" class="form-control form-control" placeholder="Enter the Total Charge" data-toggle="tooltip" title="Insert the Total Charge" data-placement="top">
+
+                                                                                    </div>
+                                                                                    <small class="form-text text-muted">Must be added two decimal points.</small>
+                                                                                </div>
+                                                                                <div class="col-md-3">
+                                                                                    <label for="discountRatio" class="eqset ceylonLog"><b>Discount Ratio :</b></label>
+                                                                                    <div class="input-group flex-nowrap">
+                                                                                        <span class="input-group-text"><i class="fas fa-tags"></i></span>
+                                                                                        <input type="text" id="discountRatio" onkeyup="textFieldBinder(discountRatio,'^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\\.[0-9]{2})?$','reservation','discountratio','oldreservation')" class="form-control form-control" placeholder="Enter the Discount Ratio" data-toggle="tooltip" title="Insert the Discount Ratio" data-placement="top">
+                                                                                        <span class="input-group-text"><b>%</b></span>
+
+                                                                                    </div>
+                                                                                    <small class="form-text text-muted">Must be added two decimal points.</small>
+                                                                                </div>
+
+
+                                                                                <div class="col-md-3">
+                                                                                    <label for="lastPrice" class="eqset ceylonLog"><b>Last Price : <span style="color: red;">*</span></b></label>
+                                                                                    <div class="input-group flex-nowrap">
+                                                                                        <span class="input-group-text"><b>Rs</b></span>
+                                                                                        <input type="text" readonly id="lastPrice" onkeyup="textFieldBinder(lastPrice,'^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\\.[0-9]{2})?$','reservation','lastprice','oldreservation')" class="form-control form-control" placeholder="Enter the Last Price" data-toggle="tooltip" title="Insert the Last Price" data-placement="top">
+
+                                                                                    </div>
+                                                                                    <small  class="form-text text-muted">Must be added two decimal points.</small>
+                                                                                </div>
+
+
+                                                                                <div class="col-md-3">
+                                                                                    <label for="advancePayment" class="eqset ceylonLog"><b>Advance Payment : <span style="color: red;">*</span></b></label>
+                                                                                    <div class="input-group flex-nowrap">
+                                                                                        <span class="input-group-text"><b>Rs</b></span>
+                                                                                        <input type="text" readonly  id="advancePayment" onkeyup="textFieldBinder(advancePayment,'^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\\.[0-9]{2})?$','reservation','advance','oldreservation')" class="form-control form-control" placeholder="Enter the Advance Payment" data-toggle="tooltip" title="Insert the Advance Payment" data-placement="top">
+
+                                                                                    </div>
+                                                                                    <small class="form-text text-muted">Must be added two decimal points.</small>
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                            <div class="row text-center mt-5">
+                                                                                <div class="col-md-12">
+                                                                                    <button class="btn btn-outline-info ceylonLog" type="button" id="btnpaymentClear" onclick="btnpaymentClearMc();" style="width: 22%">
+                                                                                        <i class="fas fa-recycle mr-2"></i> Clear
+                                                                                    </button>
+                                                                                    <!--                                                                                                                <button class="btn btn-outline-warning ceylonLog" type="submit" id="btnUpdate"-->
+                                                                                    <!--                                                                                                                        style="width: 22%"> <i class="fas fa-edit mr-2"></i> Update</button>-->
+                                                                                    <button class="btn btn-outline-success ceylonLog" style="width: 22%" type="button" id="btnpaymentAdd" onclick="btnpaymentAddMc();">
+                                                                                        <i class='fas fa-plus-circle mr-2'></i>Add
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+
+
+
+                                                                        </div>
+                                                                        <div class="modal-footer" style="background-color:#bae0f1">
+<!--                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Add Payment Details End -->
+
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mt-4">
+                                                        <div class="col-md-3">
+
+                                                            <div class="input-group flex-nowrap">
+<!--                                                                <span class="input-group-text" style="margin-right: 8px; border-radius: 24px;"><i class="fas fa-drafting-compass"></i></span>-->
+<!--                                                                <span class="ceylonLog" style="margin-right: 11px;margin-top: 8px; font-weight: 500"><b> Add The Plan</b></span>-->
+                                                                <h5><button id="planDetailsAdd" style="width: 172px;"  type="button" class="btn btn-primary" data-toggle="modal" data-target="#planAdd"><span class="ceylonLog"><i class="fas fa-pencil-ruler"></i> Add Plan</span></button></h5>
+
+
+                                                            </div>
+
+                                                            <!-- plan Add Model Start-->
+                                                            <div class="modal fade" id="planAdd"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog planAddModal" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header bg-info">
+                                                                            <h5 class="modal-title cardForheader"><img class="cnew" src="../resources/image/cnew.jpg"><span class="ceylonLog"> Plan Add to Reservation</span></h5>
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body" style="padding: 1.5rem !important;background-image: linear-gradient(rgba(255, 255, 255, 0.640),rgba(223, 194, 194, 0.25)) ,url('resources/image/door.jpg')">
+
+                                                                            <div class="row">
+                                                                                    <div class="col-md-12">
+
+                                                                                        <div id="accordion">
+                                                                                            <div class="card">
+                                                                                                <div class="card-header" id="headingOne">
+                                                                                                    <h5 class="mb-0">
+                                                                                                        <button type="button" class="btn btn-link ceylonLog" data-toggle="collapse" style="text-decoration: none;" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                                                                            <i class="fas fa-plus-circle"></i> Plan Details
+                                                                                                        </button>
+                                                                                                    </h5>
+                                                                                                </div>
+
+                                                                                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                                                                                    <div class="card-body">
+
+                                                                                                        <div class="row">
+                                                                                                            <div class="col-md-6">
+                                                                                                                <label for="cmbplanCode" class="eqset ceylonLog"><b>Plan Code : <span style="color: red;">*</span></b></label>
+                                                                                                                <div class="input-group flex-nowrap">
+                                                                                                                    <span class="input-group-text"><i class="fas fa-file"></i></span>
+                                                                                                                    <select id="cmbplanCode" onchange="comboBoxBinder(cmbplanCode,'','reservation','plan_id','oldreservation')" data-toggle="tooltip" title="Select the Plan Code" data-placement="bottom" class="form-control" data-toggle="tooltip" title="Insert the Plan Code" data-placement="bottom"></select>
+
+                                                                                                                </div>
+                                                                                                                <small class="form-text text-muted">Choose the Plan Code.</small>
+                                                                                                            </div>
+                                                                                                            <div class="col-md-6">
+                                                                                                                <label for="planaddedDate" class="eqset ceylonLog"><b>Plan Added Date : <span style="color: red;">*</span></b></label>
+                                                                                                                <div class="input-group flex-nowrap">
+                                                                                                                    <span class="input-group-text"><i class="fas fa-calendar-day"></i></span>
+                                                                                                                    <input type="date" id="planaddedDate" readonly onchange="textFieldBinder(planaddedDate,'^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$','reservation','planaddeddate','oldreservation')" class="form-control" data-toggle="tooltip" title="Insert the Plan Added date" data-placement="bottom">
+
+
+                                                                                                                </div>
+                                                                                                                <small  class="form-text autoLoad">Plan Added Date Auto Load Here.(MM-DD-YYYY)</small>
+                                                                                                            </div>
+                                                                                                        </div>
+
+
+                                                                                                        <div class="row mt-2">
+                                                                                                            <div class="col-md-6">
+                                                                                                                <label for="planCharge" class="eqset ceylonLog"><b>Plan Charge : <span style="color: red;">*</span></b></label>
+                                                                                                                <div class="input-group flex-nowrap">
+                                                                                                                    <span class="input-group-text"><b>Rs</b></span>
+                                                                                                                    <input type="text"  id="planCharge" readonly onkeyup="textFieldBinder(planCharge,'^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\\.[0-9]{2})?$','reservation','plancharge','oldreservation')" class="form-control" placeholder="Enter the Plan Charge" data-toggle="tooltip" title="Insert the Plan Charge" data-placement="top">
+
+                                                                                                                </div>
+                                                                                                                <small  class="form-text autoLoad">Plan Charge auto load here.</small>
+
+                                                                                                            </div>
+                                                                                                            <div class="col-md-6">
+                                                                                                                <label for="totalArea" class="eqset ceylonLog"><b>Total Area : <span style="color: red;">*</span></b></label>
+                                                                                                                <div class="input-group flex-nowrap">
+                                                                                                                    <span class="input-group-text"><i class="fas fa-chart-area"></i></span>
+                                                                                                                    <input type="text" id="totalArea" readonly onkeyup="textFieldBinder(totalArea,'^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\\.[0-9]{2})?$','reservation','totalarea','oldreservation')" class="form-control" placeholder="Enter the Total Area" data-toggle="tooltip" title="Insert the Total Area" data-placement="top">
+
+
+                                                                                                                </div>
+                                                                                                                <small  class="form-text autoLoad">Total Area auto load here.</small>
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                        <div class="row text-center mt-5">
+                                                                                                            <div class="col-md-12">
+                                                                                                                <button class="btn btn-outline-info ceylonLog" type="button" id="btnplanClear" onclick="btnplanClearMc();" style="width: 22%">
+                                                                                                                    <i class="fas fa-recycle mr-2"></i> Clear
+                                                                                                                </button>
+<!--                                                                                                                <button class="btn btn-outline-warning ceylonLog" type="submit" id="btnUpdate"-->
+<!--                                                                                                                        style="width: 22%"> <i class="fas fa-edit mr-2"></i> Update</button>-->
+                                                                                                                <button class="btn btn-outline-success ceylonLog" style="width: 22%" type="button" id="btnplanAdd" onclick="btnplanAddMc();">
+                                                                                                                    <i class='fas fa-plus-circle mr-2'></i>Add
+                                                                                                                </button>
+                                                                                                            </div>
+                                                                                                        </div>
+
+
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+
+
+                                                                                        </div>
+
+                                                                                    </div>
+                                                                                </div>
+
+
+
+
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary ceylonLog" data-dismiss="modal">Close</button>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <!--Plan Add Model End  -->
+
+
+
+
+
+
+                                                        </div>
+                                                        <div class="col-md-3">
+
+                                                            <div class="input-group flex-nowrap">
+<!--                                                                <span class="input-group-text" style="margin-right: 8px; border-radius: 24px;"><i class="fas fa-drafting-compass"></i></span>-->
+<!--                                                                <span class="ceylonLog" style="margin-right: 11px;margin-top: 8px;font-weight: 500"><b> Add The Estimation</b></span>-->
+                                                                <h5><button  id="estimationDetailsAdd" style="width: 172px;"  type="button" class="btn btn-primary" data-toggle="modal" data-target="#estimationAdd"><span class="ceylonLog"><i class="fas fa-ruler-combined"></i> Add Estimation</span></button></h5>
+
+
+                                                            </div>
+
+                                                            <!-- Estimation Add Model Start-->
+                                                            <div class="modal fade" id="estimationAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog planAddModal" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header bg-info">
+                                                                            <h5 class="modal-title cardForheader"><img class="cnew" src="../resources/image/cnew.jpg"><span class="ceylonLog"> Estimation Add to Reservation</span></h5>
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body" style="padding: 1.5rem !important;background-image: linear-gradient(rgba(255, 255, 255, 0.640),rgba(223, 194, 194, 0.25)) ,url('resources/image/door.jpg')">
+
+                                                                                <div class="row">
+                                                                                    <div class="col-md-12">
+
+                                                                                        <div id="">
+                                                                                            <div class="card">
+                                                                                                <div class="card-header" id="headingTwo">
+                                                                                                    <h5 class="mb-0">
+                                                                                                        <button type="button" class="btn btn-link collapsed ceylonLog" data-toggle="collapse" style="text-decoration: none;" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                                                                            <i class="fas fa-plus-circle"></i> Estimation Details
+                                                                                                        </button>
+                                                                                                    </h5>
+                                                                                                </div>
+                                                                                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                                                                                    <div class="card-body">
+                                                                                                        <div class="row">
+                                                                                                            <div class="col-md-6">
+                                                                                                                <label for="cmbestimtionCode" class="eqset ceylonLog"><b>Estimation Code : <span style="color: red;">*</span></b></label>
+                                                                                                                <div class="input-group flex-nowrap">
+                                                                                                                    <span class="input-group-text"><i class="fas fa-pencil-ruler"></i></span>
+                                                                                                                    <select id="cmbestimtionCode" onchange="comboBoxBinder(cmbestimtionCode,'','reservation','estimation_id','oldreservation')" data-toggle="tooltip" title="Select the Estimation Code" data-placement="bottom" class="form-control" data-toggle="tooltip" title="Insert the Estimation Code" data-placement="bottom"></select>
+
+                                                                                                                </div>
+                                                                                                                <small  class="form-text text-muted ceylonLog">Choose the Estimation Code.</small>
+                                                                                                            </div>
+                                                                                                            <div class="col-md-6">
+                                                                                                                <label for="estimationaddedDate" class="eqset ceylonLog"><b>Estimation Added Date : <span style="color: red;">*</span></b></label>
+                                                                                                                <div class="input-group flex-nowrap">
+                                                                                                                    <span class="input-group-text"><i class="fas fa-calendar-day"></i></span>
+                                                                                                                    <input type="date" id="estimationaddedDate" readonly class="form-control" data-toggle="tooltip" title="Insert the Estimation Added Date" data-placement="bottom">
+
+                                                                                                                </div>
+                                                                                                                <small  class="form-text autoLoad">Estimation Added Date Auto Load Here.(MM-DD-YYYY)</small>
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                        <div class="row mt-2">
+                                                                                                            <div class="col-md-6">
+                                                                                                                <label for="estimationCost" class="eqset ceylonLog"><b>Estimation Cost : <span style="color: red;">*</span></b></label>
+                                                                                                                <div class="input-group flex-nowrap">
+                                                                                                                    <span class="input-group-text"><i class="fas fa-tools"></i></span>
+                                                                                                                    <input type="text" id="estimationCost"  onkeyup="textFieldBinder(estimationCost,'^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\\.[0-9]{2})?$','reservation','estimationcost','oldreservation')" class="form-control" placeholder="Enter the Estimation Cost" data-toggle="tooltip" title="Insert the Estimation Cost" data-placement="top">
+
+                                                                                                                </div>
+                                                                                                                <small class="form-text autoLoad">Estimation Cost auto load here.</small>
+                                                                                                            </div>
+                                                                                                            <div class="col-md-6">
+                                                                                                                <label for="estimatedCost" class="eqset ceylonLog"><b>Total Estimated Cost : <span style="color: red;">*</span></b></label>
+                                                                                                                <div class="input-group flex-nowrap">
+                                                                                                                    <span class="input-group-text" id="addon-wrapping"><i class="fas fa-tools"></i></span>
+                                                                                                                    <input type="text" id="estimatedCost" readonly class="form-control" placeholder="Enter the Total Estimated Cost" data-toggle="tooltip" title="Insert the Total Estimated Cost" data-placement="top">
+
+
+
+                                                                                                                </div>
+
+                                                                                                                <small  class="form-text autoLoad">Total Estimated Cost auto load here.</small>
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                        <div class="row text-center mt-5">
+                                                                                                            <div class="col-md-12">
+                                                                                                                <button class="btn btn-outline-info ceylonLog" type="button" id="btnestimationClear" onclick="btnestimationClearMc();" style="width: 22%">
+                                                                                                                    <i class="fas fa-recycle mr-2"></i> Clear
+                                                                                                                </button>
+<!--                                                                                                                <button class="btn btn-outline-warning ceylonLog" type="submit" id="btnestimationUpdate"-->
+<!--                                                                                                                        style="width: 22%"> <i class="fas fa-edit mr-2"></i> Update</button>-->
+                                                                                                                <button  class="btn btn-outline-success ceylonLog" style="width: 22%" type="button" id="btnestimationAdd" onclick="btnestimationAddMc();">
+                                                                                                                    <i class='fas fa-plus-circle mr-2'></i>Add
+                                                                                                                </button>
+                                                                                                            </div>
+                                                                                                        </div>
+
+
+
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                        </div>
+
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary ceylonLog" data-dismiss="modal">Close</button>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!--  Estimation Add Model End  -->
+
+                                                        </div>
+
+                                                        <div class="col-md-3">
+
+<!--                                                                   <button id="addDesigner" style="width: 136px;"  type="button" class="btn btn-primary"><a href="http://localhost:8080/designerassign"></a> <span>Add Designer</span></button>-->
+                                                                   <button type="button"  id="AddDesignerbtn" style="width: 174px;" class="btn btn-info ml-3">
+                                                                       <a  href="http://localhost:8080/designerassign"><i class="fas fa-user-edit"></i> <span class="ceylonLog"> Add Designer</span></a>
+
+                                                                   </button>
+
+
+
+                                                        </div>
+
+                                                        <div class="col-md-3">
+                                                            <button id="addQs" style="width: 174px;"  type="button" class="btn btn-info ml-3">
+                                                                <a  href="http://localhost:8080/qsassign"><i class="fas fa-user-tie"></i><span class="ceylonLog" style="margin-left: 7px;"> Add QS</span></a>
+
+                                                            </button>
+                                                        </div>
+
+
+                                                    </div>
+
+                                                    <div class="row mt-3" id="plDetails">
+                                                        <!-- plan details show start-->
+                                                       <div class="col-md-12">
+
+                                                           <div class="row">
+
+
+                                                                   <div class="col-md-4">
+                                                                       <div class="row mt-2">
+                                                                           <div class="col-md-5">
+                                                                               <label for="plCode" class="showDetails ceylonLog"><b> Plan Code :</b></label>
+                                                                           </div>
+                                                                           <div class="col-md-7">
+                                                                               <div class="input-group flex-nowrap">
+                                                                                   <span id="plCode"></span>
+
+                                                                               </div>
+
+                                                                           </div>
+                                                                       </div>
+
+                                                                   </div>
+                                                                   <div class="col-md-4">
+                                                                       <div class="row mt-2">
+                                                                           <div class="col-md-5">
+                                                                               <label for="plphoto" class="showDetails ceylonLog"><b> Plan Photo : </b></label>
+                                                                           </div>
+                                                                           <div class="col-md-7">
+                                                                               <div class="input-group flex-nowrap">
+                                                                                   <span><img id="plphoto" width="50px;" height="50px;"></span>
+
+                                                                               </div>
+
+                                                                           </div>
+                                                                       </div>
+
+                                                                   </div>
+                                                                   <div class="col-md-4">
+                                                                       <div class="row mt-2">
+                                                                           <div class="col-md-5">
+                                                                               <label for="plCharge" class="showDetails ceylonLog"><b> Plan Charge : (Rs.)</b></label>
+                                                                           </div>
+                                                                           <div class="col-md-7">
+                                                                               <div class="input-group flex-nowrap">
+                                                                                   <span id="plCharge"></span>
+
+                                                                               </div>
+
+                                                                           </div>
+                                                                       </div>
+
+                                                                   </div>
+
+
+
+                                                           </div>
+
+                                                       </div>
+
+
+
+                                                        <!-- plan details show end-->
+                                                    </div>
+
+                                                    <!-- estimation details show start -->
+                                                    <div class="row mt-3" id="esDetails">
+                                                      <div class="col-md-12">
+
+                                                          <div class="row">
+
+                                                              <div class="col-md-4">
+
+                                                                  <div class="row mt-2">
+                                                                      <div class="col-md-5">
+                                                                          <label for="plphoto" class="showDetails ceylonLog"><b>Estimation Code: </b></label>
+                                                                      </div>
+                                                                      <div class="col-md-7">
+                                                                          <div class="input-group flex-nowrap">
+                                                                              <span id="esCode"></span>
+
+                                                                          </div>
+
+                                                                      </div>
+                                                                  </div>
+
+                                                              </div>
+                                                              <div class="col-md-4">
+
+                                                                  <div class="row mt-2">
+                                                                      <div class="col-md-5">
+                                                                          <label for="plphoto" class="showDetails ceylonLog"><b> Estimation Cost: (Rs.) </b></label>
+                                                                      </div>
+                                                                      <div class="col-md-7">
+                                                                          <div class="input-group flex-nowrap">
+                                                                              <span id="esCost"></span>
+
+                                                                          </div>
+
+                                                                      </div>
+                                                                  </div>
+
+                                                              </div>
+                                                              <div class="col-md-4">
+
+                                                                  <div class="row mt-2">
+                                                                      <div class="col-md-5">
+                                                                          <label for="estedCost" class="showDetails ceylonLog"><b> Estimated Cost: (Rs.) </b></label>
+                                                                      </div>
+                                                                      <div class="col-md-7">
+                                                                          <div class="input-group flex-nowrap">
+                                                                              <span id="estedCost"></span>
+
+                                                                          </div>
+
+                                                                      </div>
+                                                                  </div>
+
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                    </div>
+                                                    <!--estimation details show end -->
+
+
+
+                                                </fieldset>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- construction subtask start-->
+                                        <div class="row mt-3">
+                                            <div class="col-md-12">
+                                                <fieldset class="border p-2">
+                                                    <legend class="w-9 legendMain ceylonLog">Construction Sub Parts</legend>
+
+                                                    <div id="accordionS">
+                                                        <div class="card">
+                                                            <div class="card-header" style="background-color:#bae0f1;">
+                                                                <h5 class="mb-0">
+                                                                    <button type="button" class="btn btn-link" style="text-decoration: none;" data-toggle="collapse" data-target="#subparts" aria-expanded="true" aria-controls="collapseOne">
+                                                                     <h3><i class="fas fa-tasks"></i> Sub Parts Adding</h3>
+                                                                    </button>
+                                                                </h5>
+                                                            </div>
+
+                                                            <div id="subparts" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionS">
+                                                                <div class="card-body" style="border-style: groove;background-image: linear-gradient(rgba(255, 248, 248, 0.640),rgba(223, 208, 208, 0.80))">
+
+
+                                                                    <div class="row" style="border: 2px solid #007bff;border-radius: 15px;padding-top: 20px;">
+
+                                                                        <div class="col-md-12">
+
+
+                                                                            <div class="row">
+
+                                                                                <div class="col-md-6">
+
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-6">
+                                                                                            <label for="cmbdFloorArea" class="eqset ceylonLog"><b>Floor Area Type: <span style="color: red;">*</span></b></label>
+                                                                                            <div class="input-group flex-nowrap">
+                                                                                                <span class="input-group-text"><i class="fas fa-toolbox"></i></span>
+                                                                                                <select  id="cmbdFloorArea" onchange="comboBoxBinder(cmbdFloorArea,'','subpart','floorarea_id','oldsubpart')"  data-toggle="tooltip" title="Select the Floor Area Type" data-placement="bottom" class="form-control" data-toggle="tooltip" title="Select the the Construction Type" data-placement="bottom"></select>
+
+                                                                                            </div>
+                                                                                            <small class="form-text text-muted">Select Floor Area Type.</small>
+
+                                                                                        </div>
+
+
+                                                                                        <div class="col-md-6">
+
+
+                                                                                            <label for="totalCharge" class="eqset ceylonLog"><b>No Of Bed Room: </b></label>
+                                                                                            <div class="input-group flex-nowrap">
+                                                                                                <span class="input-group-text"><b>Rs</b></span>
+                                                                                                <input type="text" id="noBed" onkeyup="textFieldBinder(noBed,'^(?!0+$)\\d+$','subpart','numberofbedroom','oldsubpart')"  class="form-control" placeholder="Enter No Of Bed Room" data-toggle="tooltip" title="Ex:1,2,3..." data-placement="top">
+
+
+                                                                                            </div>
+                                                                                            <small class="form-text text-muted">Not allow zero(0).</small>
+
+
+                                                                                        </div>
+
+
+
+                                                                                    </div>
+
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-6">
+
+
+
+                                                                                            <label for="totalCharge" class="eqset ceylonLog"><b>No Of Kitchen:</b></label>
+                                                                                            <div class="input-group flex-nowrap">
+                                                                                                <span class="input-group-text"><b>Rs</b></span>
+                                                                                                <input type="text" id="noKitchen" onkeyup="textFieldBinder(noKitchen,'^(?!0+$)\\d+$','subpart','numberofkitchen','oldsubpart')"  class="form-control" placeholder="Enter No Of Kitchen" data-toggle="tooltip" title="Ex:1,2,3..." data-placement="top">
+
+
+                                                                                            </div>
+                                                                                            <small class="form-text text-muted">Not allow zero(0).</small>
+
+
+                                                                                        </div>
+                                                                                        <div class="col-md-6">
+
+                                                                                            <label for="totalCharge" class="eqset ceylonLog"><b>No Of Living Room:</b></label>
+                                                                                            <div class="input-group flex-nowrap">
+                                                                                                <span class="input-group-text"><b>Rs</b></span>
+                                                                                                <input type="text" id="noLiving" onkeyup="textFieldBinder(noLiving,'^(?!0+$)\\d+$','subpart','numberoflivingroom','oldsubpart')"  class="form-control" placeholder="Enter No Of Living Room" data-toggle="tooltip" title="Ex:1,2,3..." data-placement="top">
+
+
+                                                                                            </div>
+                                                                                            <small class="form-text text-muted">Not allow zero(0).</small>
+
+
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-6">
+
+                                                                                            <label for="totalCharge" class="eqset ceylonLog"><b>No Of Dinning Room: </b></label>
+                                                                                            <div class="input-group flex-nowrap">
+                                                                                                <span class="input-group-text"><b>Rs</b></span>
+                                                                                                <input type="text" id="noDinning" onkeyup="textFieldBinder(noDinning,'^(?!0+$)\\d+$','subpart','numberofdinningroom','oldsubpart')"  class="form-control" placeholder="Enter No Of Dinning Room" data-toggle="tooltip" title="Ex:1,2,3..." data-placement="top">
+
+
+                                                                                            </div>
+                                                                                            <small class="form-text text-muted">Not allow zero(0).</small>
+
+
+
+                                                                                        </div>
+                                                                                        <div class="col-md-6">
+
+
+                                                                                            <label for="noGuestroom" class="eqset ceylonLog"><b>No Of Guest Room-01:</b></label>
+                                                                                            <div class="input-group flex-nowrap">
+                                                                                                <span class="input-group-text"><b>Rs</b></span>
+                                                                                                <input type="text" id="noGuestroom" onkeyup="textFieldBinder(noGuestroom,'^(?!0+$)\\d+$','subpart','numberofguestroom','oldsubpart')"  class="form-control" placeholder="Enter No Of Guest Room-01" data-toggle="tooltip" title="Ex:1,2,3..." data-placement="top">
+
+
+                                                                                            </div>
+                                                                                            <small class="form-text text-muted">Not allow zero(0).</small>
+
+
+
+
+                                                                                            <!--                                                                                            <label for="totalCharge" class="eqset ceylonLog"><b>No Of Guest Room-02</b></label>-->
+<!--                                                                                            <div class="input-group flex-nowrap">-->
+<!--                                                                                                <span class="input-group-text"><b>Rs</b></span>-->
+<!--                                                                                                <input type="text" id="noPantry" onkeyup="textFieldBinder(noPantry,'^(?!0+$)\\d+$','subpart','numberofpantry','oldsubpart')"  class="form-control" placeholder="Enter No Of Bed Room" data-toggle="tooltip" title="Insert the Project Location" data-placement="top">-->
+
+
+<!--                                                                                            </div>-->
+<!--                                                                                            <small class="form-text text-muted">Not allow zero(0).</small>-->
+
+
+                                                                                        </div>
+
+
+                                                                                    </div>
+
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-6">
+
+                                                                                            <label for="totalCharge" class="eqset ceylonLog"><b>No Of Bathroom:</b></label>
+                                                                                            <div class="input-group flex-nowrap">
+                                                                                                <span class="input-group-text"><b>Rs</b></span>
+                                                                                                <input type="text" id="noBathroom" onkeyup="textFieldBinder(noBathroom,'^(?!0+$)\\d+$','subpart','numberofbathroom','oldsubpart')"  class="form-control" placeholder="Enter No Of Bathroom" data-toggle="tooltip" title="Ex:1,2,3..." data-placement="top">
+
+
+                                                                                            </div>
+                                                                                            <small class="form-text text-muted">Not allow zero(0).</small>
+
+
+                                                                                        </div>
+
+                                                                                        <div class="col-md-6">
+
+
+                                                                                            <label for="totalCharge" class="eqset ceylonLog"><b>No Of Guest Room-02</b></label>
+                                                                                            <div class="input-group flex-nowrap">
+                                                                                                <span class="input-group-text"><b>Rs</b></span>
+                                                                                                <input type="text" id="noPantry" onkeyup="textFieldBinder(noPantry,'^(?!0+$)\\d+$','subpart','numberofpantry','oldsubpart')"  class="form-control" placeholder="Enter No Guest Room-02" data-toggle="tooltip" title="Ex:1,2,3..." data-placement="top">
+
+
+                                                                                            </div>
+                                                                                            <small class="form-text text-muted">Not allow zero(0).</small>
+
+
+
+
+
+
+                                                                                            <!--                                                                                            <div class="eqbtn" style="padding-top: 34px">-->
+<!--&lt;!&ndash;                                                                                                <button class="btn btn-outline-success ceylonLog mt-2" type="button" onclick="btnInnerAddMC();" id="btnInnerAdd" style="width: 100%">&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                                    <i class="fas fa-plus-circle mr-2"></i> Add&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                                </button>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;                                                                                                <button class="btn btn-outline-warning ceylonLog mt-2" type="button" onclick="btnInnerUpdateMC();" id="btnInnerUpdate" style="width: 100%">&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                                    <i class="fas fa-plus-circle mr-2"></i> Update&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                                </button>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                                                                                <button class="btn btn-outline-info ceylonLog mt-2" type="button" onclick="btnInnerClearMC();" id="btnInnerClear"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                                        style="width: 100%"> <i class="fas fa-recycle mr-2"></i>Clear</button>&ndash;&gt;-->
+
+
+
+<!--                                                                                            </div>-->
+
+                                                                                        </div>
+
+                                                                                    </div>
+
+                                                                                    <div class="row mt-5">
+                                                                                        <div class="col-md-12">
+                                                                                            <div class="row mt-2">
+                                                                                                <div class="col-md-12">
+                                                                                                    <button class="btn addAllbtn ceylonLog mt-2" type="button" onclick="btnInnerAddMC();" id="btnInnerAdd" style="width: 100%;border-radius: 20px">
+                                                                                                        <i class="fas fa-plus-circle mr-2"></i> Add
+                                                                                                    </button>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <div class="row mt-2">
+                                                                                                <div class="col-md-12">
+                                                                                                    <button class="btn updateAllbtn ceylonLog mt-2" type="button" onclick="btnInnerUpdateMC();" id="btnInnerUpdate" style="width: 100%;border-radius: 20px">
+                                                                                                        <i class="fas fa-pen-square"></i> Update
+                                                                                                    </button>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <div class="row mt-2">
+                                                                                                <div class="col-md-12">
+                                                                                                    <button class="btn clearAllbtn ceylonLog mt-2" type="button" onclick="btnInnerClearMC();" id="btnInnerClear"
+                                                                                                            style="width: 100%;border-radius: 20px"> <i class="fas fa-recycle mr-2"></i>Clear
+                                                                                                    </button>
+
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+
+
+
+                                                                                </div>
+
+                                                                                <div class="col-md-6">
+
+                                                                                    <div class="card">
+                                                                                        <div class="card-header bg-info"><h4> House Sub Parts</h4></div>
+                                                                                        <div class="card-body" style="border-style: groove;background-image: linear-gradient(rgba(255, 248, 248, 0.640),rgba(223, 208, 208, 0.80))">
+
+                                                                                            <div class="row" style="border: 2px solid #007bff;border-radius: 15px;padding-top: 10px;padding-bottom: 10px;">
+                                                                                                <div class="col-md-8">
+
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-md-12 Housepartcmbsearch">
+
+                                                                                                            <label for="cmbdFloorArea" class="eqset ceylonLog"><b>House Part: <span style="color: red;">*</span></b></label>
+                                                                                                            <div class="input-group flex-nowrap">
+                                                                                                                <span class="input-group-text"><i class="fas fa-toolbox"></i></span>
+                                                                                                                <select  id="cmbHouesepart" onchange="getsubparts();"  data-toggle="tooltip" title="Select the Construction Type" data-placement="bottom" class="form-control js-example-basic-single" data-toggle="tooltip" title="Select the the Construction Type" data-placement="bottom"></select>
+
+                                                                                                            </div>
+                                                                                                            <small class="form-text text-muted">Select Floor Area Type.</small>
+
+
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-md-12">
+
+                                                                                                            <label for="cmbdFloorArea" class="eqset ceylonLog"><b>House Sub Part: <span style="color: red;">*</span></b></label>
+                                                                                                         <div class="input-group flex-nowrap">
+                                                                                                                <span class="input-group-text"><i class="fas fa-toolbox"></i></span>
+                                                                                                                <select  id="cmbHouseSubPart" onchange="comboBoxBinder(cmbHouseSubPart,'','constructionsubtaskhasfloorareahashousesubpart','housesubparts_id','oldconstructionsubtaskhasfloorareahashousesubpart')"  data-toggle="tooltip" title="Select the Construction Type" data-placement="bottom" class="form-control" data-toggle="tooltip" title="Select the the Construction Type" data-placement="bottom"></select>
+
+                                                                                                            </div>
+                                                                                                            <small class="form-text text-muted">Select Floor Area Type.</small>
+
+
+                                                                                                        </div>
+                                                                                                    </div>
+
+
+
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="row mt-4">
+                                                                                                        <div class="col-md-12">
+                                                                                                            <button type="button" style="width: 100%" id="btnsubpartclear" class="btn btn-outline-info btn-sm fbtnSet" onclick="subinnerClearHP();">
+                                                                                                                <i class="fas fa-recycle mr-2"></i> Clear
+                                                                                                            </button>
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                    <div class="row mt-4">
+                                                                                                        <div class="col-md-12">
+                                                                                                            <button type="button" style="width: 100%;" id="btnsubpartadd" class="btn btn-outline-success btn-sm fbtnSet" onclick="subinnerAdd();">
+                                                                                                                <i class="fas fa-plus-circle mr-2"></i> Add
+                                                                                                            </button>
+
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                    <div class="row mt-4">
+                                                                                                        <div class="col-md-12">
+                                                                                                            <button type="button" style="width: 100%;" id="btnsubpartupdate" class="btn btn-outline-warning btn-sm fbtnSet" onclick="subinnerUpdate();">
+                                                                                                                <i class="fas fa-pen-square"></i> Update
+                                                                                                            </button>
+
+                                                                                                        </div>
+                                                                                                    </div>
+
+
+
+
+
+                                                                                                </div>
+                                                                                            </div>
+
+<!--                                                                                            <div class="row mt-3">-->
+<!--                                                                                                <div class="col-md-12">-->
+
+<!--                                                                                                    <div class="text-left">-->
+<!--                                                                                                        <button type="button" style="width: 16%;" id="btnsubpartclear" class="btn btn-outline-info btn-sm fbtnSet" onclick="subinnerClear();">-->
+<!--                                                                                                            <i class="fas fa-plus-circle mr-2"></i> Clear-->
+<!--                                                                                                        </button>-->
+<!--                                                                                                        <button type="button" style="width: 16%;" id="btnsubpartadd" class="btn btn-outline-success btn-sm fbtnSet" onclick="subinnerAdd();">-->
+<!--                                                                                                            <i class="fas fa-plus-circle mr-2"></i> Add-->
+<!--                                                                                                        </button>-->
+<!--                                                                                                        <button type="button" style="width: 16%;" id="btnsubpartupdate" class="btn btn-outline-warning btn-sm fbtnSet" onclick="subinnerUpdate();">-->
+<!--                                                                                                            <i class="fas fa-plus-circle mr-2"></i> Update-->
+<!--                                                                                                        </button>-->
+
+<!--                                                                                                    </div>-->
+<!--                                                                                                </div>-->
+<!--                                                                                            </div>-->
+
+
+
+                                                                                            <!-- sub Area Table -->
+                                                                                            <div class="row mt-2">
+                                                                                                <div class="col-md-12">
+
+                                                                                                    <div id="accordionHouse">
+
+                                                                                                        <div class="card">
+                                                                                                            <div class="card-header cardForheader" style="background-color:#bae0f1;" id="headingThree">
+                                                                                                                <h5 class="mb-0">
+                                                                                                                    <button style="text-decoration: none;"  class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseHouse" aria-expanded="false" aria-controls="collapseHouse">
+                                                                                                                        <h4 class="ceylonLog"><i class="fas fa-table"></i>House Sub Part Table</h4>
+
+                                                                                                                    </button>
+                                                                                                                </h5>
+                                                                                                            </div>
+                                                                                                            <div id="collapseHouse" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionHouse">
+                                                                                                                <div class="card-body">
+                                                                                                                    <div class="row" id="InnerSubtasktable" style="height: 200px;overflow-y:scroll;">
+
+                                                                                                                        <script>
+                                                                                                                            var metadatainner = [
+
+                                                                                                                                {name: 'House Part', search: true, datatype: 'text', property: 'housesubparts_id.housepart_id.name'},
+                                                                                                                                {name: 'House Sub Part', search: true, datatype: 'text', property: 'housesubparts_id.name'},
+
+
+
+                                                                                                                            ];
+
+                                                                                                                            // tableForInnerForm("InnerSubtasktable","tblInnersubtask",metadatasubinner,true);
+                                                                                                                            tableForInnerForm("InnerSubtasktable","tblInnerHousesubtask",metadatainner,true);
+                                                                                                                        </script>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+
+
+
+
+
+
+
+                                                                                                </div>
+                                                                                            </div>
+
+
+
+                                                                                        </div>
+                                                                                        <div class="card-footer"></div>
+                                                                                    </div>
+                                                                                    <!--                                                                       inner form-->
+                                                                                </div>
+
+
+
+
+
+
+
+
+
+                                                                            </div>
+
+
+
+
+
+
+                                                                            <!--                                                           <div class="row">-->
+                                                                            <!--                                                               <div class="col-md-12">-->
+
+                                                                            <!--                                                                   <div class="eqbtn" style="padding-top: 34px">-->
+                                                                            <!--                                                                       <button class="btn btn-outline-success ceylonLog" type="button" onclick="btnInnerAddMC();" id="btnInnerAdd" style="width: 30%">-->
+                                                                            <!--                                                                           <i class="fas fa-plus-circle mr-2"></i> Add-->
+                                                                            <!--                                                                       </button>-->
+
+
+                                                                            <!--                                                                       <button class="btn btn-outline-warning ceylonLog" type="button" onclick="btnInnerUpdateMC();" id="btnInnerUpdate" style="width: 30%">-->
+                                                                            <!--                                                                           <i class="fas fa-plus-circle mr-2"></i> Update-->
+                                                                            <!--                                                                       </button>-->
+
+                                                                            <!--                                                                       <button class="btn btn-outline-info ceylonLog" type="button" onclick="btnInnerClearMC();" id="btnInnerClear"-->
+                                                                            <!--                                                                               style="width: 30%"> <i class="fas fa-recycle mr-2"></i>Clear</button>-->
+
+
+
+                                                                            <!--                                                                   </div>-->
+                                                                            <!--                                                               </div>-->
+                                                                            <!--                                                           </div>-->
+
+
+
+                                                                            <!--                                                           <div class="row mt-2">-->
+
+                                                                            <!--                                                             <div class="col-md-12">-->
+
+
+
+                                                                            <!--                                                                     <div class="eqbtn">-->
+                                                                            <!--                                                                         <button class="btn btn-outline-success ceylonLog" type="button" onclick="btnInnerAddMC();" id="btnInnerAdd" style="width: 28%">-->
+                                                                            <!--                                                                             <i class="fas fa-plus-circle mr-2"></i> Add-->
+                                                                            <!--                                                                         </button>-->
+
+
+                                                                            <!--                                                                         <button class="btn btn-outline-warning ceylonLog" type="button" onclick="btnInnerUpdateMC();" id="btnInnerUpdate" style="width: 28%">-->
+                                                                            <!--                                                                             <i class="fas fa-plus-circle mr-2"></i> Update-->
+                                                                            <!--                                                                         </button>-->
+
+                                                                            <!--                                                                         <button class="btn btn-outline-info ceylonLog" type="button" onclick="btnInnerClearMC();" id="btnInnerClear"-->
+                                                                            <!--                                                                                 style="width: 28%"> <i class="fas fa-recycle mr-2"></i>Clear</button>-->
+
+
+
+                                                                            <!--                                                                     </div>-->
+
+
+
+                                                                            <!--                                                             </div>-->
+
+
+                                                                            <!--                                                           </div>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                        </div>
+
+                                                                        <div class="col-md-6">
+
+                                                                            <!-- innerTable -->
+
+
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row mt-2">
+                                                                        <div class="col-md-12">
+                                                                            <div id="accordionHousesubparts">
+                                                                                <div class="card">
+                                                                                    <div class="card-header cardForheader" style="background-color:#bae0f1;" id="headingSubpartsAdding">
+                                                                                        <h5 class="mb-0">
+                                                                                            <button style="text-decoration: none;"  class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseHousesubparts" aria-expanded="false" aria-controls="collapseHousesubparts">
+                                                                                                <h4 class="ceylonLog"><i class="fas fa-table"></i> Sub Parts Adding Table</h4>
+                                                                                            </button>
+                                                                                        </h5>
+                                                                                    </div>
+                                                                                    <div id="collapseHousesubparts" class="collapse show" aria-labelledby="headingSubpartsAdding" data-parent="#accordionHousesubparts">
+                                                                                        <div class="card-body">
+
+
+
+                                                                                            <div class="row mt-2" id="InnerSubparttable" style="height: 200px;overflow-y:scroll;">
+                                                                                                <script>
+                                                                                                    // if(subpart.numberofbedroom == null){
+                                                                                                    //
+                                                                                                    // }
+                                                                                                    var metadatainner = [
+                                                                                                        {name: 'Floor Area Type', search: true, datatype: 'text', property: 'floorarea_id.name'},
+                                                                                                        {name: 'No Of Bed Rooms', search: true, datatype: 'text', property: 'numberofbedroom'},
+                                                                                                        {name: 'No Of Kitchen', search: true, datatype: 'text', property: 'numberofkitchen'},
+                                                                                                        {name: 'No Of Bath Rooms', search: true, datatype: 'text', property: 'numberofbathroom'},
+                                                                                                        {name: 'No Of Living Rooms', search: true, datatype: 'text', property: 'numberoflivingroom'},
+                                                                                                        {name: 'No Of Dinning Rooms', search: true, datatype: 'text', property: 'numberofdinningroom'},
+                                                                                                        {name: 'No of Guest Room-01', search: true, datatype: 'text', property: 'numberofguestroom'},
+                                                                                                        // {name: 'No of Guest Room-01', search: true, datatype: 'text', property: 'numberofpantry'},
+
+
+
+                                                                                                    ];
+
+                                                                                                    tableForInnerForm("InnerSubparttable","tblInnersubpart",metadatainner,true);
+                                                                                                </script>
+
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+
+
+
+
+
+
+
+
+
+
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+
+
+
+                                                </fieldset>
+                                            </div>
+                                        </div>
+
+
+
+                                        <!-- construction subtask end-->
+
+                                        <!-- Inernal Details -->
+                                        <div class="row mt-3">
+                                            <div class="col-md-12">
+
+                                                    <div class="row" style="border-right: rgb(240, 17, 17);">
+                                                        <div class="col-md-12">
+                                                            <fieldset class="border p-2">
+                                                                <legend class="w-9 legendMain ceylonLog">Internal Details</legend>
+                                                            <!--  accordion -->
+                                                            <div>
+
+                                                                <div id="accordionIn">
+                                                                    <div class="card">
+                                                                        <div class="card-header" style="background-color:#bae0f1;">
+                                                                            <h5 class="mb-0">
+                                                                                <button type="button" style="text-decoration: none;" class="btn btn-link" data-toggle="collapse" data-target="#collapseIntern" aria-expanded="true" aria-controls="collapseOne">
+                                                                                   <h3><i class="fas fa-book"></i> Intern Details</h3>
+                                                                                </button>
+                                                                            </h5>
+                                                                        </div>
+
+                                                                        <div id="collapseIntern" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionIn">
+                                                                            <div class="card-body" style="border-style: groove;background-image: linear-gradient(rgba(255, 248, 248, 0.640),rgba(223, 208, 208, 0.80))">
+
+
+                                                                                <div class="row">
+
+
+                                                                                    <div class="col-md-3">
+                                                                                        <label for="totalCharge" class="eqset ceylonLog"><b>Reservation Status : <span style="color: red;">*</span></b></label>
+                                                                                        <div class="input-group flex-nowrap">
+                                                                                            <span class="input-group-text"><i class="fas fa-star-half-alt"></i></span>
+                                                                                            <select  id="cmbreservationStatus" onchange="comboBoxBinder(cmbreservationStatus,'','reservation','reservationstatus_id','oldreservation')" data-toggle="tooltip" title="Select the Reservation Status" data-placement="bottom" class="form-control" data-toggle="tooltip" title="Insert the Reservation Status" data-placement="bottom"></select>
+
+                                                                                        </div>
+                                                                                        <small class="form-text autoLoad">Reservation Status is Auto load here.</small>
+                                                                                    </div>
+
+
+
+                                                                                    <div class="col-md-3">
+                                                                                        <label for="resDescription" class="eqset ceylonLog"><b>Description: </b></label>
+                                                                                        <div class="input-group flex-nowrap">
+                                                                                            <span class="input-group-text"><i class="fas fa-sticky-note"></i></span>
+                                                                                            <textarea class="form-control" id="resDescription" onkeyup="textFieldBinder(resDescription,'^.*$','reservation','description','oldreservation')" placeholder="Enter the Reservation Description" row="2" data-toggle="tooltip" title="Insert the Reservation Description" data-placement="top"></textarea>
+
+                                                                                        </div>
+                                                                                        <small class="form-text text-muted">You Can use any characters for the Description.</small>
+                                                                                    </div>
+
+                                                                                    <div class="col-md-3">
+                                                                                        <label for="addedDate" class="eqset ceylonLog"><b>Added Date: <span style="color: red;">*</span></b></label>
+                                                                                        <div class="input-group flex-nowrap">
+                                                                                            <span class="input-group-text"><i class="fas fa-calendar-day"></i></span>
+                                                                                            <input type="date" id="addedDate" class="form-control" data-toggle="tooltip" title="Insert the Added date" data-placement="bottom">
+
+                                                                                        </div>
+                                                                                        <small class="form-text  autoLoad">Added Date Auto Load Here.</small>
+                                                                                    </div>
+
+                                                                                    <div class="col-md-3">
+                                                                                        <label for="cmbaddedBy" class="eqset ceylonLog"><b>Added By: <span style="color: red;">*</span></b></label>
+                                                                                        <div class="input-group flex-nowrap">
+                                                                                            <span class="input-group-text"><i class="fas fa-user-shield"></i></span>
+                                                                                            <select id="cmbaddedBy" data-toggle="tooltip" title="Select the Added By" data-placement="bottom" class="form-control" data-toggle="tooltip" title="Insert the Added By" data-placement="bottom"></select>
+
+                                                                                        </div>
+                                                                                        <small class="form-text autoLoad">Added By Auto Load Here.</small>
+                                                                                    </div>
+
+
+
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                </div>
+
+                                                            </div>
+                                                            </fieldset>
+
+
+
+
+                                                        </div>
+
+
+
+
+                                                    </div>
+
+
+                                                    <div class="row">
+                                                        <div class="col-md-12 text-left">
+                                                            <div class="eqbtn">
+                                                                <button type="button" id="btnClear" class="btn clearAllbtn btnR ceylonLog">
+                                                                    <i class="fas fa-recycle mr-2"></i> Clear
+                                                                </button>
+                                                                <button type="submit" id="btnUpdate" class="btn updateAllbtn btnR ceylonLog">
+                                                                    <i class="fas fa-pen-square"></i> Update
+                                                                </button>
+                                                                <button type="submit" id="btnAdd" class="btn addAllbtn btnR ceylonLog">
+                                                                    <i class="fas fa-plus-circle mr-2"></i> Add
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+
+
+                                            <!-- feild set start -->
+
+                                            <!-- feild set -->
+                                        </div>
+
+
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+
+                                                <!--main buttons -->
+<!--                                                <div class="text-right mt-3">-->
+<!--                                                    <button class="btn btn-outline-info ceylonLog" type="button" id="btnClear" style="width: 25%">-->
+<!--                                                        <i class="fas fa-recycle mr-2"></i> Clear-->
+<!--                                                    </button>-->
+<!--                                                    <button class="btn btn-outline-warning ceylonLog" type="submit" id="btnUpdate"-->
+<!--                                                            style="width: 25%"> <i class="fas fa-edit mr-2"></i> Update</button>-->
+<!--                                                    <button class="btn btn-outline-success ceylonLog" style="width: 25%" type="submit" id="btnAdd">-->
+<!--                                                        <i class='fas fa-plus-circle mr-2'></i>Add-->
+<!--                                                    </button>-->
+
+<!--                                                </div>-->
+
+
+
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="row p-3 formcontent" id="divTable">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-9">
+
+<!--                                            <input type="button" class="btn tblbtnprint font-weight-bold" value="Print Table"-->
+<!--                                                   id="btnPrintTable" onclick="btnPrintTableMC()"/>-->
+
+                                            <button class="btn btn-info ceylonLog" id="btnPrintTable" onclick="btnPrintTableMC()"><i class='fas fa-print mr-2'></i>Print Table</button>
+
+                                        </div>
+                                        <div class="col-md-3">
+
+                                            <div class="float-right input-group">
+                                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+                                                <input placeholder="Search" class="form-control" type="text"
+                                                       id="txtSearchName"/>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+<!--                                    <input type="button" class="btn tblbtnprint font-weight-bold" value="Print Table"-->
+<!--                                           id="btnPrintTable" onclick="btnPrintTableMC()"/>-->
+<!--                                    -->
+<!--                                    <div class="float-right input-group">-->
+<!--                                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>-->
+<!--                                        <input placeholder="Search" class="form-control" type="text"-->
+<!--                                               id="txtSearchName"/>-->
+<!--                                    </div>-->
+
+                                </div>
+
+
+                                <hr/>
+                                <div class="table-responsive" id="tableParent" class="table-container ml-2">
+
+                                    <script>
+
+                                        function getNameColumn(ob) {
+                                            return ob.callingname + "(" + ob.number + ")";
+                                        }
+
+                                        var metadata = [
+                                            {name: 'Reservation Code', search: true, datatype: 'text', property: 'reservationcode'},
+                                            {name: 'Customer', search: true, datatype: 'text', property: 'customer_id.regno'},
+                                            {name: 'Location', search: true, datatype: 'text', property: 'projectlocation'},
+                                            {
+                                                name: 'Province',
+                                                search: true,
+                                                datatype: 'text',
+                                                property: 'province_id.name'
+                                            },
+                                            {
+                                                name: 'Status',
+                                                search: true,
+                                                datatype: 'text',
+                                                property: 'reservationstatus_id.name'
+                                            }
+                                        ];
+                                        table("tableParent", "tblReservation", metadata, true);
+
+                                    </script>
+
+
+                                </div>
+
+                                <div>
+                                    <div style="display: inline-block ; float: left">
+                                        <select class="form-control input" id="cmbPageSize"
+                                                style="width: 80px;">
+                                            <option selected value="5">5</option>
+                                            <option value="10">10</option>
+                                            <option value="15">15</option>
+                                            <option value="20">20</option>
+<!--                                            <option value="1000">1000</option>-->
+                                        </select>
+                                        <script>
+                                            cmbPageSize.onchange = function chnagePageSize() {
+                                                activepage = 1;
+                                                btnSearchMC();
+                                            };
+                                        </script>
+                                    </div>
+                                    <div style="display: inline-block; margin-left: 10px;">
+                                        <ul id="pagination" class="pagination"></ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="card-footer">
+<!--                            <div id="err">-->
+<!--                                <h3>Error Log</h3>-->
+<!--                            </div>-->
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="dataviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog"  style="max-width: 1250px"  role="document">
+        <div class="modal-content">
+            <div class="modal-header cardhead">
+                <h3 class="modal-title cardForheader" id="exampleModalLabel"><img class="cnew" src="../resources/image/cnew.jpg"> <span>Reservation Details</span> </h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="background-image: linear-gradient(rgba(255, 248, 248, 0.640),rgba(247, 237, 237, 0.80)) ,url('resources/image/exc.jpg')">
+                <div class="row">
+                    <div class="col-md-12  text-right">
+                        <button type="button" style="background-color: #77b9b9" class="btn ceylonLog" onclick="btnPrintRowMC();">Print Page</button>
+                    </div>
+                </div>
+                <table id="printformtable" class="mt-5 table table-bordered table-striped">
+                    <tbody>
+                    <tr>
+                        <th class="tdview">Reservation Code  :</th>
+                        <td class="tdview" id="tdrescode"></td>
+                        <th class="tdview">Project Title :</th>
+                        <td class="tdview" id="tdptitle"></td>
+                        <th class="tdview">Project Location :</th>
+                        <td class="tdview" id="tdlocation"></td>
+                    </tr>
+
+                    <tr>
+                        <th class="tdview">Customer Code :</th>
+                        <td class="tdview" id="tdcuscode"></td>
+                        <th class="tdview">Province :</th>
+                        <td class="tdview" id="tdprovince"></td>
+                        <th class="tdview">Supervisor :</th>
+                        <td class="tdview" id="tdsupervisor"></td>
+
+                    </tr>
+
+                    <tr>
+                        <th class="tdview">Service Name :</th>
+                        <td class="tdview" id="tdsname"></td>
+                        <th class="tdview">Service Charge :</th>
+                        <td class="tdview" id="tdscharge"></td>
+                        <th class="tdview">Existig/New Plan :</th>
+                        <td class="tdview" id="tdexnewplan"></td>
+                    </tr>
+
+                    <tr>
+                        <th class="tdview">Construction Type :</th>
+                        <td class="tdview" id="tdcontype"></td>
+                        <th class="tdview">Number of Floor :</th>
+                        <td class="tdview" id="tdnfloor"></td>
+                        <th class="tdview">Total Charge :</th>
+                        <td class="tdview" id="tdtcharge"></td>
+                    </tr>
+                    <tr>
+                        <th class="tdview">Discount Ratio  :</th>
+                        <td class="tdview" id="tddratio"></td>
+                        <th class="tdview">Last Price :</th>
+                        <td class="tdview" id="tdlprice"></td>
+                        <th class="tdview">Advance Payment :</th>
+                        <td class="tdview" id="tdapayment"></td>
+                    </tr>
+                    <tr>
+                        <th class="tdview">Paid Amount :</th>
+                        <td class="tdview" id="tdpaidamount"></td>
+                        <th class="tdview">Plan Code  :</th>
+                        <td class="tdview" id="tdpcode"></td>
+                        <th class="tdview">Pl-Added Date  :</th>
+                        <td class="tdview" id="tdpadedddate"></td>
+
+                    </tr>
+                    <tr>
+                        <th class="tdview">Plan Charge :</th>
+                        <td class="tdview" id="tdpcharge"></td>
+                        <th class="tdview">Total Area  :</th>
+                        <td class="tdview" id="tdtotalarea"></td>
+                        <th class="tdview">Estimation Code  :</th>
+                        <td class="tdview" id="tdescode"></td>
+
+
+                    </tr>
+                    <tr>
+                        <th class="tdview">Es-Added Date  :</th>
+                        <td class="tdview" id="tdeadedddate"></td>
+                        <th class="tdview">Estimation Cost :</th>
+                        <td class="tdview" id="tdescost"></td>
+                        <th class="tdview">Total Es-Cost :</th>
+                        <td class="tdview" id="tdtotalescost"></td>
+
+                    </tr>
+                    <tr>
+                        <th class="tdview">Status:</th>
+                        <td class="tdview" id="tdstatus"></td>
+                        <th class="tdview">Description :</th>
+                        <td class="tdview" id="tddescription"></td>
+                        <th class="tdview">Added Date:</th>
+                        <td class="tdview" id="tdaddeddate"></td>
+
+
+
+                    </tr>
+                    <tr>
+                        <th class="tdview">Added By:</th>
+                        <td class="tdview" id="tdaddedby"></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="6" id="tdPrintInner">
+                            <script>
+
+                                var metadatainner = [
+                                    {name: 'Floor Area Type', search: true, datatype: 'text', property: 'floorarea_id.name'},
+                                    {name: 'No Of Bed Rooms', search: true, datatype: 'text', property: 'numberofbedroom'},
+                                    {name: 'No Of Kitchen', search: true, datatype: 'text', property: 'numberofkitchen'},
+                                    {name: 'No Of Bath Rooms', search: true, datatype: 'text', property: 'numberofbathroom'},
+                                    {name: 'No Of Living Rooms', search: true, datatype: 'text', property: 'numberoflivingroom'},
+                                    {name: 'No Of Dinning Rooms', search: true, datatype: 'text', property: 'numberofdinningroom'},
+                                    {name: 'No of Guest Room-01', search: true, datatype: 'text', property: 'numberofguestroom'},
+
+                                    // {name: 'No Of Guest Room-2', search: true, datatype: 'text', property: 'numberofpantry'},
+
+
+
+                                ];
+
+                                tableForInnerForm("tdPrintInner","tblInnerrowprint",metadatainner,false);
+                            </script>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+<!--            <div class="modal-footer">-->
+<!--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--                <button type="button" class="btn btn-primary" onclick="btnPrintRowMC();">Print Row</button>-->
+<!--            </div>-->
+        </div>
+    </div>
+</div>
+
+<div class="overlay"></div>
+
+<!-- Settings Modal-->
+<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog"
+     aria-labelledby="settingsModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content" id="modalContent">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle"><i
+                        class="fas fa-cog"></i> Settings</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="changePasswordForm" onsubmit="return false">
+                    <div class="form-row">
+                        <!-- Username -->
+                        <div class="form-group col-md-12">
+                            <label for="txtUsernameView" class="text-blue">
+                                <b>Username</b>
+                            </label>
+                            <div readonly class="form-control-plaintext"
+                                 id="txtUsernameView"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Current Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtCurrentPassword"
+                                   class="text-blue"><b>Current Password</b> <i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtCurrentPassword"
+                                   onkeyup="textFieldBinder(txtCurrentPassword, '^[0-9]{5,}$', 'changePassword', 'currentPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- New Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtNewPassword" class="text-blue"><b>New
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtNewPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', '', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Confirm Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtConfirmPassword"
+                                   class="text-blue"><b>Confirm
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtConfirmPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', 'newPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="brnClosechnagepasswordmodle" class="btn btn-secondary" data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary"
+                        onclick="btnSaveChangePasswordMC()">Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

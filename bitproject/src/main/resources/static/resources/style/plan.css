@@ -1,0 +1,84 @@
+.mainCardHeader {
+    font-family: 'Heebo', sans-serif;
+}
+
+.bdcolor {
+    background: #4CA1AF;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #C4E0E5, #4CA1AF);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #C4E0E5, #4CA1AF);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.cplan {
+    width: 50px;
+    border-radius: 8px;
+    border: 3px solid #007bff;
+}
+
+.btnSub {
+    padding-top: 30px;
+    text-align: center;
+}
+
+.btnSub button {
+    width: 20%;
+    padding-right: 20px;
+}
+
+.planbtnSet {
+    width: 100%;
+}
+
+.floorAreaLabel {
+    font-size: 13px;
+}
+
+.planForm {
+    font-size: 13px;
+}
+
+.btnfloor {
+    text-align: left;
+}
+
+.btnfloor button {
+    width: 20%;
+}
+
+
+/* .fbtnSet {} */
+
+.subareaLabel {
+    font-size: 10px !important;
+}
+
+.subf {
+    text-align: left;
+    padding: 5px;
+}
+
+.subf button {
+    width: 20%;
+}
+
+
+/* sub Area Table */
+
+.subAreaTable {
+    font-size: 14px;
+}
+
+.mainbtn {
+    padding-bottom: 12px;
+}
+
+/*photo label*/
+#flePhotoLabel{
+    font-size: 13px;
+
+}
+#flePhoto{
+    font-size: 15px!important;
+}
